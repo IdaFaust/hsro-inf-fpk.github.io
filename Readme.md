@@ -1,30 +1,9 @@
-# Programmieren 3
+# Fortgeschrittene Programmierkonzepte (aka Programmieren 3)
 
 
-_Required class for [CS majors](https://www.fh-rosenheim.de/technik/informatik-mathematik/informatik-bachelor/) at the [University of Applied Sciences Rosenheim](https://www.fh-rosenheim.de). --- Pflichtmodul im [Bachelorstudiengang Informatik](https://www.fh-rosenheim.de/technik/informatik-mathematik/informatik-bachelor/) an der [Hochschule Rosenheim](https://www.fh-rosenheim.de)._
+_Pflichtmodul im [Bachelorstudiengang Informatik](https://www.th-rosenheim.de/technik/informatik-mathematik/informatik-bachelor/) an der [Hochschule Rosenheim](https://www.th-rosenheim.de)._
 
-
-## Class Schedule
-
-**Lecture**: Thursdays at 8a
-
-**Tutorials**: Thursdays at 11.45a/1.45p/3.30p; tutor: Peter Kurfer
-
-**Comunication** via [Mattermost](https://inf-mattermost.fh-rosenheim.de/inf-prg3/channels/town-square) ([invite](https://inf-mattermost.fh-rosenheim.de/signup_user_complete/?id=c8n9474tq3dm8mjn7cse1xsesa)).
-
-_Note: Materials will be in English, the lectures/tutorials will be taught in German; the written exam will be German (you may answer in English)._
-
-
-## Class and Credits (_Leistungsnachweis_)
-Lectures: Not your classic lecture--- we'll work together on concrete problems and their solution. 
-The class will be taught in German, the materials are mostly in English.
-
-Tutorials and assignments: Pairprogramming preferred, [_BYOD_](https://en.wikipedia.org/wiki/Bring_your_own_device) strongly recommended!
-
-Credits: written exam (90') at the end of the semester.
-
-
-## Recommended Textbooks
+## Literatur
 
 - Bloch: [Effective Java](https://www.amazon.de/Effective-Java-2nd-Programming-Language/dp/0321356683/)
 - Oaks: [Java Performance](https://www.amazon.de/Java-Performance-The-Definitive-Guide/dp/1449358454/)
@@ -32,77 +11,69 @@ Credits: written exam (90') at the end of the semester.
 - Subramaniam: [Functional Programming in Java](https://www.amazon.de/Functional-Programming-Java-Harnessing-Expressions/dp/1937785467/)
 - Siedersleben: [Moderne Softwarearchitektur](https://www.amazon.de/Moderne-Software-Architektur-Umsichtig-planen-robust/dp/3898642925/)
 
-
-### Additional Materials
+### ausserdem hilfreich
 
 - Peter's [UML/PlantUML guide](./plantuml-guide)
 
 
-## Syllabus
-- **Introduction (Oct 4, [slides](/01s-intro/), [assignments](https://github.com/hsro-inf-prg3/01-tools/))**
+## Vorlesungen
+
+- **Einführung und Organisatorisches ([Slides](/01s-intro/), [Übungen](https://github.com/hsro-inf-fpk/01-tools/))**
 	
-	With a few examples we dig right into the necessary tools of a (Java) software engineer: Git, IntelliJ, and of course: [Google](https://www.google.com), [SO](https://www.stackoverflow.com) and the [Java docs](http://docs.oracle.com/javase/8/docs/).
+	Nach einer kurzen Einführung werden wir uns an Hand einiger Beispiele die notwendigen Tools im Java Umfeld ansehen, damit wir für das Semester das Rüstzeug eines Softwareingenieur zur Hand haben: Git, IntelliJ, [Google](https://www.google.com), [SO](https://www.stackoverflow.com) und [Java docs](http://docs.oracle.com/javase/8/docs/). Fehlt noch was?.
 
-- **Classes and Interfaces revisited (Oct 11, [slides](/02s-classes-interfaces/), [lecture notes](/02ln-classes-interfaces/), [assignments](https://github.com/hsro-inf-prg3/02-classes-interfaces/))**
+- **Klassen und Interfaces (als Wiederholung!) ([Slides](/02s-classes-interfaces/), [Skript](/02ln-classes-interfaces/), [Übungen](https://github.com/hsro-inf-fpk/02-classes-interfaces/))**
 	
-	We look at different types of classes (inner, anonymous, local, static), when to use them, and which visibility for which purpose.
-	Also: `@FunctionalInterface` and lambda expressions.
+	In dieser Session sehen wir uns verschiedene Typen von Klassen an: inner, anonymous, local, und static Klassen. Wann wird was benutzt und welche Sichtbarkeit haben sie?
+	Ausserdem: `@FunctionalInterface` und Lambda-Expressions.
 
-- **Inheritance revisited (Oct 18, [slides](/03s-inheritance/), [lecture notes](/03ln-inheritance/), [assignments](https://github.com/hsro-inf-prg3/03-inheritance))**
+- **Vererbung (Wiederholung!) ([Slides](/03s-inheritance/), [Skript](/03ln-inheritance/), [Übungen](https://github.com/hsro-inf-fpk/03-inheritance))**
 	
-	We talk about abstract and final classes, (pure) virtual functions and defaults.
-	Also, when (and how) to use abstract base classes, and how the Decorator pattern can be used to add functionality to existing classes.
-
-- **Mixins, pt. 1; Generics, pt. 1 (Oct 25, [slides](/04s-generics-1/), [lecture notes](/04ln-generics-1/), [assignments](https://github.com/hsro-inf-prg3/04-generics))**
+	Eine weitere Session, die sich mit Klassen beschäftigt. Allerdings mehr aus Sicht der Veerbung (ein wichtiges Konzept der OOP!). Hierzu sehen wir uns final und abstract Classes an, sowie virtuelle Funktionen und defaults.
+	Mit einem ersten Design-Pattern (Decorator) sollte das Thema dann abgerundet sein.
 	
-	After a short digression to Mixins, we dig into the details of how generics work in Java, and how to apply them to data structures and algorithms.
-
-> No class and assignments on Nov 1 (All Saints/Allerheiligen).
-
-- **Mixin, pt. 2; Generics, pt. 2(Nov 8, [slides](/05s-generics-2/), [lecture notes](/05ln-generics-2/), [assignments](https://github.com/hsro-inf-prg3/05-generic-bounds))**
+- **Mixins (Teil 1) und Generics (Teil 1) ([Slides](/04s-generics-1/), [Skript](/04ln-generics-1/), [Übungen](https://github.com/hsro-inf-fpk/04-generics))**
 	
-	We'll review Mixins and see how to use generics to make them stateful.
-	Generics and inheritance need special attention, and will lead us to bounds and wildcards.
+	Nach einem kurzen Ausflug zu Mixins, stürzen wir uns natürlich voller Freude in das Thema "Generics". Wie werden diese in Datastrukturen und Algorithmen angewendet.
 
-- **Reflection and Annotations (Nov 15, [slides](/06s-reflection-annotations/), [lecture notes](/06ln-reflection-annotations/), [assignments](https://github.com/hsro-inf-prg3/06-annotations-reflection))**
+- **Mixins (Teil 2) und Generics (Teil 2) ([Slides](/05s-generics-2/), [Skript](/05ln-generics-2/), [Übungen](https://github.com/hsro-inf-fpk/05-generic-bounds))**
 	
-	Learn how reflection works in Java, and how they enable annotations by using examples of testing ([JUnit5](http://junit.org/junit5/)), serialization ([gson](https://github.com/google/gson)) and networking ([retrofit](https://github.com/square/retrofit)).
+	Mixins zum zweiten und ein paar Sonderfälle bei Generics (Bounds und Wildcards) bestimmen diese Session.
 
-- **Design patterns, pt. 1 (Nov 22, [slides](/07s-iterator-composite-observer/), [lecture notes](/07ln-iterator-composite-observer/), assignments: [JavaFX (recommended)](https://github.com/hsro-inf-prg3/07-composite-observer-jfx) or [Android (advanced)](https://github.com/hsro-inf-prg3/07-composite-observer))**
-
-	We begin with a few basic patterns: composite, iterator and observer, and use that to dive into Android and MVC/MVVC.
-
-- **Design patterns, pt. 2 (Nov 29, [slides](/08s-singleton-factory-strategy-command/), [lecture notes](/08ln-singleton-factory-strategy-command/), assignments: [JavaFX](https://github.com/hsro-inf-prg3/08-singleton-factory-strategy-jfx) or [Android](https://github.com/hsro-inf-prg3/08-singleton-factory-strategy-android))**
-
-	We look at more every-day-patterns: singleton, factory, strategy and command.
-
-- **Design patterns, pt. 3 (Dec 6, [slides](/09s-proxy-adapter-flyweight/), [lecture notes](/09ln-proxy-adapter-flyweight/), assignments: [JavaFX](https://github.com/hsro-inf-prg3/09-adapter-flyweight-jfx), [Android](https://github.com/hsro-inf-prg3/09-adapter-flyweight-android))**
+- **Reflection und Annotations ([Slides](/06s-reflection-annotations/), [Skript](/06ln-reflection-annotations/), [Übungen](https://github.com/hsro-inf-fpk/06-annotations-reflection))**
 	
-	We round up a few more useful patterns: proxy and adapter to make other peoples' modules fit your needs, and flyweight to save on precious memory in (mostly) graphical apps.
+	Mit dem Reflection API und Annotationen werden wir uns in dieser Session beschäftigen. Das gelingt am Besten an Hand von einigen Beispielen: Unit Tests mit ([JUnit5](http://junit.org/junit5/)), Serialization mit ([gson](https://github.com/google/gson)) und Networking mit ([retrofit](https://github.com/square/retrofit)).
 
-- **Parallel processing, pt. 1 (Dec 13, [slides](/10s-threads/), [lecture notes](/10ln-threads/), assignments: [JavaFX](https://github.com/hsro-inf-prg3/10-threads-jfx) or [Android](https://github.com/hsro-inf-prg3/10-threads-android))**
+- **Design Pattern (Teil 1) ([Slides](/07s-iterator-composite-observer/), [Skript](/07ln-iterator-composite-observer/), Übungen: [JavaFX (recommended)](https://github.com/hsro-inf-fpk/07-composite-observer-jfx) or [Android (advanced)](https://github.com/hsro-inf-fpk/07-composite-observer))**
 
-	Because sometimes, you need to work on more than one thing at a time!
-	We'll talk about threads and concurrency when it comes to resources.
+	Fun with Pattern! In dieser Session starten wir endlich mit Design-Pattern im Software Engeneering: Composite-, Iterator- und Observer-Pattern (ach ja, und wie kann man damit ein UI implementieren auf Android). Was ist eigentlich MVC/MVVC?
 
-- **Parallel processing, pt. 2 (Dec 20, [slides](/11s-futures/), [lecture notes](/11ln-futures/), assignments: [Terminal](https://github.com/hsro-inf-prg3/11-futures-cli) or [Android](https://github.com/hsro-inf-prg3/11-futures-android))**
+- **Design Pattern, pt. 2 ([Slides](/08s-singleton-factory-strategy-command/), [Skript](/08ln-singleton-factory-strategy-command/), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/08-singleton-factory-strategy-jfx) or [Android](https://github.com/hsro-inf-fpk/08-singleton-factory-strategy-android))**
+
+	Mehr Pattern: Singleton-, Factory-, Strategy- und Command-Pattern.
+
+- **Design Pattern, pt. 3 ([Slides](/09s-proxy-adapter-flyweight/), [Skript](/09ln-proxy-adapter-flyweight/), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/09-adapter-flyweight-jfx), [Android](https://github.com/hsro-inf-fpk/09-adapter-flyweight-android))**
 	
-	`Thread`s are clunky--- learn about a better `Future`, and what _promise chaining_ can do for you.
+	Last but not least! Zum Abschluß der Pattern-Reihe: Proxy-, Adapter- und Flyweight-Pattern.
 
-- **Introduction to functional programming (Jan 10, [slides](/12s-fp1/), [lecture notes](/12ln-fp1/), [assignments](https://github.com/hsro-inf-prg3/12-functional-cli))**
+- **Parallel Processing (Teil 1) ([Slides](/10s-threads/), [Skript](/10ln-threads/), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/10-threads-jfx) or [Android](https://github.com/hsro-inf-fpk/10-threads-android))**
+
+	Parallele Ausführung von Programcode ist ein wichtiges Konzept. In dieser Session steigen wir ein in Threads und parallele Verarbeitung.
+
+- **Parallel Processing (Teil 2) ([Slides](/11s-futures/), [Skript](/11ln-futures/), Übungen: [Terminal](https://github.com/hsro-inf-fpk/11-futures-cli) or [Android](https://github.com/hsro-inf-fpk/11-futures-android))**
 	
-	Leave your imperative and objected oriented programming comfort zone and follow me down the rabbit hole of functional programming.
-	After some theory, we'll do some basic exercises, including `filter`, `map` and `forEach`.
+	`Thread`s are clunky--- erweiterte Konzepte, wie `Future` oder `Promises` werden in dieser Session behandelt.
 
-- **Functional programming in Java (Jan 17, [slides](/13s-fp2/), [lecture notes](/13ln-fp2/), [assignments](https://github.com/hsro-inf-prg3/13-map-reduce-collect))**
+- **Einführung in die funktionale Programmierung ([Slides](/12s-fp1/), [Skript](/12ln-fp1/), [Übungen](https://github.com/hsro-inf-fpk/12-functional-cli))**
+	
+	Nachdem wir uns nun fast 3 Semester mit der imperativen und objektorientierten Programmierung beschäftigt haben, verlassen wir nun unsere Komfortzone und schauen uns Konzepte der funktionalen Programmierung an.
+	Natürlich haben wir zunächst ein wenig Spaß mit der Theorie bevor wir uns so tollen Dingen wie `filter`, `map` und `forEach` zu wenden.
 
-	We'll talk about the specifics (and limits) of functional programming in Java.
-	Learn about the classes and interfaces used for Java's functional parts, and the more sophisticated stream reduction using `reduce` and `collect`.
+- **Functional programming in Java ([Slides](/13s-fp2/), [Skript](/13ln-fp2/), [Übungen](https://github.com/hsro-inf-fpk/13-map-reduce-collect))**
 
-- **Review (Jan 24)**
+	Eine weitere Session zu funktionaler Programmierung. Was ist besonders und wo sind die Grenzen? Warum ist es gerade gar so populär?
+	Ein nette Besonderheit, wie funktionale Programmierung in OO-Sprachen integriert wird, sind natürlich Klassen und Interfaces. Das schauen wir uns an Hand von ´streams´ und wie `reduce` und `collect` darauf angewendet wird.
 
-	_TBA_.
+- **Zusammenfassung und Klausurvorbereitung (Jan 24)**
 
-
-
-_Subscribe to [https://github.com/hsro-inf-prg3/hsro-inf-prg3.github.io](https://github.com/hsro-inf-prg3) repository to follow updates._
+	Diese Session nutzen wir, um das Semester noch mal grob zu überfliegen und das als Klausurvorbereitung zu nutzen. Sicher eine gute Chance Fragen loszuwerden.
