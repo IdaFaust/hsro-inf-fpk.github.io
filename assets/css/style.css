@@ -64,6 +64,7 @@ code {
   background-size: 28%;
   border-bottom: 35px solid #F39100;
   padding-bottom: 0em;
+  vertical-align: 2em;
 }
 
 .remark-slide-content::after {

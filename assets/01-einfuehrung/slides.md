@@ -9,62 +9,90 @@ Fakultät für Informatik, Cloud Computing
 
 ---
 
-# Introduction
+# Überblick
 
-- Programmieren 3: mandatory class for CS majors
-- materials
-	- https://hsro-inf-fpk.github.io
-	- Github organization: https://github.com/hsro-inf-fpk
-	- ...in English! &#x263A;
-	- slides, lecture notes, assignments (with Readmes)
-- class: Wednesdays, 8a
-- tutorials: 
-	- tutor: ???
-	- Wednesdays 11.45a/1.45p/3.30p
-	- sign up [through community](https://www.fh-rosenheim.de/community/inf-community/lehrveranstaltungen/details/?tx_fhalumni_pi1%5Buid%5D=3134#registration)
+### Fortgeschrittene Programmierkonzepte (FPK)
+#### (aka Programmieren 3)
 
-Materialien auf Englisch, Vorlesung aber auf Deutsch.
-Github orga ist closed/BIO--by invitation only
+### Pflichtmodul Informatik Bachelor
 
 ---
 
-# Credits (Leistungsnachweis)
+# Organisatorisches
 
-- written exam (90') at the end of the term
-- you may bring one (1) book *with* ISBN number and *without* notes
-- you need to sign up for the exam (OSC)
-- theoretical and coding questions
+- Material:
+	- https://hsro-inf-fpk.github.io (fork von https://hsro-inf-prg3.github.io)
+	- Github Organization: https://github.com/hsro-inf-fpk
+	- Slides, Skript, Übungen ...in Englisch! &#x263A;
+	- Learning Campus: Einschreiben unter **Fortgeschrittene Programmierkonzepte (INF-B3), WiSe19/20** (Selbsteinschreibung ohne Schlüssel!)
+
+- Vorlesung: Mittwochs,  08:00 - 09:30 in **R0.03**
+- Übungen: 
+	- Tutor: ???
+	- Mittwochs, 2./3./4. Stunde, **S1.31**
+	- Gruppenwahl über Learning Campus
+
+- [Mattermost](https://inf-mattermost.fh-rosenheim.de/inf-fpk-wise20/channels/town-square)([einschreiben](https://inf-mattermost.fh-rosenheim.de/signup_user_complete/?id=mdkk585s8fytfkz37m5owr39ke))
+
+
+**WICHTIG: Materialien auf Englisch, Vorlesung aber auf Deutsch.**
 
 ---
+
+# Leistungsnachweis
+
+### Klausur!
+
+- schriftliche Prüfung (SP, 90 Minuten) am Ende des Semesters
+- erlaubt ist ein Buch mit ISBN Nummer
+- Anmeldung über OSC
+
+- Was kommt dran?
+	- Alles was in der Vorlesung dran war!
+
+---
+
+# Lernziele
+
+### Aus dem Modulhandbuch
+
+Die Studierenden ...
+- ... **vertiefen** ihre Kenntnisse in der objektorientierten Programmierung am Beispiel einer geeigneten Programmiersprache (hier: Java!)
+- ... können die Möglichkeiten und Gefahren der objektorientierten Programmierung **beurteilen**.
+- ... **sind befähigt**, alle wichtigen Programmierkonzepte für das Programmieren im Großen im Sinne der Komponentenorientierung anzuwenden.
+- ... **erarbeiten sich die Grundlagen** der funktionalen Programmierung und deren Anwendungsgebiete.
+
+---
+
 
 # Review
 
 ## Programmieren 1
-- imperative programming in C
-- constants, variables, expressions, functions, I/O
-- basic data structures (fields, arrays, lists)
-- pointers &#x263A;
+
+- Imperative Programmierung in C
+- Constants, Variables, Expressions, Functions, I/O
+- Datenstrukturen (fields, arrays, lists)
+- Pointer &#x263A;
+
+--
+
+## Programmieren 2 (OOP)
+
+- Objekt-orierntierte Programmierung (OOP) in Java
+- Klassen und Objekte
+- Interfaces und Vererbung
+- Fehlerbehandlung via Exceptions
 
 ---
 
-# Review
+# Agenda für FPK
 
-## Programmieren 2
-- object-oriented programming (OOP) in Java
-- classes and objects (and references! &#x263A;)
-- interfaces and inheritance
-- errors, exceptions and how to deal with them
-
----
-
-# Agenda for Programmieren 3
-
-See https://hsro-inf-fpk.github.io/ (Syllabus)
+.middle[See https://hsro-inf-fpk.github.io/ ]
 
 
 ---
 
-# Agenda today
+# Agenda für heute
 
 0. _Inform:_<br>
 	Your trusted advisors: [Google](https://google.com) -- [SO](https://stackoverflow.com) -- [Java Docs](https://docs.oracle.com/javase/8/docs/) -- [Google Translate](https://translate.google.com/)
@@ -81,16 +109,19 @@ See https://hsro-inf-fpk.github.io/ (Syllabus)
 4. _(Optional) Collaborate_<br>
 	Practice cross-repository pull requests and learn about _continuous integration_ (https://travis-ci.org/)
 
-???
 
 SO = stackoverflow
 
 ---
 
-# Memorize: The git VCS
+# Version Control
 
+## Git
+
+- Git is a distributed version-control system for tracking changes in source code during software development.
+- It is designed for coordinating work among programmers, but it can be used to track changes in any set of files
 - [Git](https://git-scm.com) is the _de-facto_ state of the art [version control system](https://en.wikipedia.org/wiki/Version_control).
-- Some of you might remember [CVS (concurrent versions system)](http://savannah.nongnu.org/projects/cvs) or [subversion](https://subversion.apache.org/), geeks might also know of [mercurial](https://www.mercurial-scm.org/).
+- Some of you might remember [CVS (concurrent versions system)](http://savannah.nongnu.org/projects/cvs) or [subversion](https://subversion.apache.org/).
 - Generally speaking, you should always use a version control system (VCS) when working on code, so you can keep track of changes.
 - Print and laminate: https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
 - For the more visual: http://ndpsoftware.com/git-cheatsheet.html
@@ -102,13 +133,20 @@ SO = stackoverflow
 
 https://www.atlassian.com/continuous-delivery/continuous-delivery-workflows-with-feature-branching-and-gitflow
 
-![Basic CD Workflow](/assets/CDworkflows_basic2.png)
+.center[![:scale 50%](/assets/img/CDworkflows_basic2.png)]
+
+- Git Guide: https://rogerdudler.github.io/git-guide/
+- Git != GitHub
 
 ---
 
-# Automate: The Gradle Build Tool
+# Automate
 
-![GBT](/assets/gradlebuildtool.png)
+### The Gradle Build Tool (GBT)
+
+Gradle is an open-source build-automation system that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language instead of the XML form used by Apache Maven for declaring the project configuration.
+
+.center[![:scale 20%](/assets/img/gradlebuildtool.png)]
 .center[https://gradle.org]
 
 - `gradle init --type java-application` to bootstrap a project
@@ -123,11 +161,29 @@ https://www.atlassian.com/continuous-delivery/continuous-delivery-workflows-with
 
 .center[https://www.jetbrains.com/idea/]
 
+.center[![:scale 70%](/assets/img/intellij.png)]
 ---
 
-# Travis CI
+# Collaborate
+
+### Travis CI
+
+Travis CI is a hosted continuous integration service used to build and test software projects hosted at GitHub. Travis CI provides various paid plan for private projects, and a free plan for open source.
 
 - Collaboration means splitting the work
 - Teamwork means working together
 - Use feature branches and automated tests (JUnit)
 - Use automated build and test runner
+
+---
+
+# Summary
+
+- We will look into advanced programming concepts in Java (starting next week!)
+- We will use professional software engineering tools
+	- Git
+	- IntelliJ Idea
+	- Gradle
+	- Travis CI
+
+- Let's try to have fun!
