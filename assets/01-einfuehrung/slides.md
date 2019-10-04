@@ -1,3 +1,11 @@
+
+---
+title: 'Modul: Fortgeschrittene Programmierkonzepte (FPK)'
+subtitle: '01-Einführung'
+author: 'Dozent: Prof. Dr. Marcel Tilly'
+institute: 'Bachelor Informatik, Fakultät für Informatik'
+...
+---
 class: title-slide  
 
 # Modul- Fortgeschrittene Programmierkonzepte
@@ -6,15 +14,6 @@ class: title-slide
 ## 01-Einführung
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
-
----
-
-# Überblick
-
-### Fortgeschrittene Programmierkonzepte (FPK)
-#### (aka Programmieren 3)
-
-### Pflichtmodul Informatik Bachelor
 
 ---
 
@@ -87,7 +86,7 @@ Die Studierenden ...
 
 # Agenda für FPK
 
-.middle[See https://hsro-inf-fpk.github.io/ ]
+See https://hsro-inf-fpk.github.io/
 
 
 ---
@@ -133,7 +132,7 @@ SO = stackoverflow
 
 https://www.atlassian.com/continuous-delivery/continuous-delivery-workflows-with-feature-branching-and-gitflow
 
-.center[![:scale 50%](/assets/img/CDworkflows_basic2.png)]
+.center[![:scale 50%](../img/CDworkflows_basic2.png)]
 
 - Git Guide: https://rogerdudler.github.io/git-guide/
 - Git != GitHub
@@ -146,7 +145,7 @@ https://www.atlassian.com/continuous-delivery/continuous-delivery-workflows-with
 
 Gradle is an open-source build-automation system that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language instead of the XML form used by Apache Maven for declaring the project configuration.
 
-.center[![:scale 20%](/assets/img/gradlebuildtool.png)]
+.center[![:scale 20%](../img/gradlebuildtool.png)]
 .center[https://gradle.org]
 
 - `gradle init --type java-application` to bootstrap a project
@@ -161,7 +160,7 @@ Gradle is an open-source build-automation system that builds upon the concepts o
 
 .center[https://www.jetbrains.com/idea/]
 
-.center[![:scale 70%](/assets/img/intellij.png)]
+.center[![:scale 70%](../img/intellij.png)]
 ---
 
 # Collaborate
