@@ -4,3 +4,8 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 .DS_Store
+examples/.classpath
+.classpath
+.project
+.settings/
+bin/
