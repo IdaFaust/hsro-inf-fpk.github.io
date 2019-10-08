@@ -9,7 +9,7 @@ Fakultät für Informatik, Cloud Computing
 
 ---
 
-# Before we starts..
+# Before we start..
 
 ## Tiny logo competition!
 
@@ -22,7 +22,7 @@ Price
 .center[![:scale 30%](./img/milka.png)]
 
 
-Send your proposals t me by end of this week (Sunday!)! Voting starts Monday!
+Send your proposals to me by end of this week (Sunday!)! Voting starts Monday!
 
 ---
 
@@ -59,17 +59,18 @@ Send your proposals t me by end of this week (Sunday!)! Voting starts Monday!
 
 - _Information hiding_ (or _encapsulation_) is a fundamental concept in object-oriented programming.
 
-- grouping information and algorithms to coherent modules
-
 - In Java, this is realized using
  - _interfaces_ (keyword `interface`): describe the externals of modules
  - _classes_ (keyword `class`): encapsulate information (variables) and business logic (methods).
 
+- Also, grouping information and algorithms to coherent modules
 ---
 
 # Information Hiding
 
-Storing an instance of a class that _implements_ (keyword `implements`) an interface in a reference to said interface illustrates the principle of _information hiding_.
+Storing an instance of a class that _implements_ (keyword `implements`) an interface in a reference 
+
+Example of _information hiding_:
 
 ```java
 interface Intfc {
@@ -99,8 +100,9 @@ inst1.method1();
 inst2.method1();  // ok-- method guaranteed
 
 inst1.method2();  // ok-- reference of type Klass
-inst2.method2();  // error: methdo2() not provided by Intfc
+inst2.method2();  // Does this work?
 ```
+--
 
 As you can see, regardless of the actual implementation, you can "see" only what's on the class or interface definition.
 
@@ -295,13 +297,17 @@ int n2 = k.nextInt();      // n2 == 2, Klass.n == 3
 Note that static attributes and methods can be called from both the class and the instance.
 To avoid misunderstandings, use the class when accessing static members.
 
-Typical use cases for static members are constants, shared counters, or the Singleton pattern.
+Typical use cases for static members are 
+- constants, 
+- shared counters, 
+- or the Singleton pattern.
 
 ---
 
 # Static Initializers
 
-As you can see in the example above, static attributes are typically immediately initialized (particularly if they're `final`).
+Static attributes are typically immediately initialized (particularly if they're `final`).
+
 If the value is not just a simple expression, you can use a _static initializer block_ `static { /* ... */ }` to do the work:
 
 ```java
@@ -321,7 +327,7 @@ class Klass {
 
 Consider the following example of a simple binary tree: every node has a left and a right child; the tree is defined by its root node.
 
-- The class that represents the node very specific to the `BinaryTree` (and presumably not useful to other classes), thus we make it an inner class:
+- The class that represents the node is very specific to the `BinaryTree` (and presumably not useful to other classes), thus its is a good candidate of an inner class:
 
 ```java
 class BinaryTree {
@@ -335,15 +341,15 @@ class BinaryTree {
 
 Inner classes can have accessibility modifiers (`private`, `protected`, `public`), and are defined within the enclosing class's `{}` (the order of attributes is irrelevant).
 
-> Note: Inner classes are also compiled, and stored as `Outer$Inner.class`.
+- Inner classes are also compiled, and stored as `BinaryTree$Node.class`.
 
 ---
 
 # Inner Classes
 
-All attributes and methods of the outer class are available to the inner class -- regardless of their accessibility level!
-This is also the reason that instances of (regular) inner classes can only exist with an instance of the corresponding outer class.
-Potential shadowing of variables by inner class can be resolved by using the class name:
+- All attributes and methods of the outer class are available to the inner class -- regardless of their accessibility level!
+- This is also the reason that instances of (regular) inner classes can only exist with an instance of the corresponding outer class.
+- Potential shadowing of variables by inner class can be resolved by using the class name:
 
 ```java
 class Outer {
@@ -388,8 +394,10 @@ Outer.Inner oi = new Outer().new Inner();
 
 # Anonymous Classes
 
-Far more often, you will be using anonymous innter classes.
+Far more often, you will be using anonymous inner classes.
+
 Recall the sorting function `java.util.Collections.sort(List<T> list, Comparator<? super T> c)` (ignore the `<...>` for now).
+
 You might have used this as follows:
 
 ```java
@@ -408,6 +416,7 @@ Collections.sort(mylist, new MyComparator());
 # Anonymous Classes
 
 While this works just fine, you have one more extra class, just to carry the actual comparison code.
+
 Anonymous classes help keeping your class hierarchy clutter-free:
 
 ```java
@@ -482,8 +491,7 @@ interface Filter {
 ```java
 class Klass {
 	void filter(Filter f) {
-		// ...
-	}
+		// f.test(...)
 }
 ```
 ```java
