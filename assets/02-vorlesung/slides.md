@@ -1,3 +1,11 @@
+
+---
+title: 'Modul: Fortgeschrittene Programmierkonzepte (FPK)'
+subtitle: '02-Vorlesung: Classes und Interfaces'
+author: 'Dozent: Prof. Dr. Marcel Tilly'
+institute: 'Bachelor Informatik, Fakultät für Informatik'
+...
+---
 class: title-slide  
 
 # Modul- Fortgeschrittene Programmierkonzepte
@@ -64,6 +72,7 @@ Send your proposals to me by end of this week (Sunday!)! Voting starts Monday!
  - _classes_ (keyword `class`): encapsulate information (variables) and business logic (methods).
 
 - Also, grouping information and algorithms to coherent modules
+
 ---
 
 # Information Hiding
@@ -125,6 +134,7 @@ In Java, you can organize your code and structure your project with modules.
 # Visibility
 
 Recall the [visibility modifiers that are defined in Java](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html):
+
 - `public`: visible everywhere (apply to class, attributes or methods)
 - `private`: visible only within the class (apply to attributes or methods)
 - `protected`: visible within the class, package **and** in derived classes (apply to attributes or methods; more next week)

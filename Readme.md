@@ -18,16 +18,16 @@ _Pflichtmodul im [Bachelorstudiengang Informatik](https://www.th-rosenheim.de/te
 
 ## Vorlesungen
 
-- **Einführung und Organisatorisches ([Slides](/assets/01-einfuehrung/slides.html), [Übungen](https://github.com/hsro-inf-fpk/01-tools/))**
+- **Einführung und Organisatorisches ([Slides](/assets/01-einfuehrung/slides.html), [Pdf](/assets/01-einfuehrung/01-einfuehrung.pdf)),[Übungen](https://github.com/hsro-inf-fpk/01-tools/))**
 	
 	Nach einer kurzen Einführung werden wir uns an Hand einiger Beispiele die notwendigen Tools im Java Umfeld ansehen, damit wir für das Semester das Rüstzeug eines Softwareingenieur zur Hand haben: Git, IntelliJ, [Google](https://www.google.com), [SO](https://www.stackoverflow.com) und [Java docs](http://docs.oracle.com/javase/8/docs/). Fehlt noch was?.
 
-- **Klassen und Interfaces (als Wiederholung!) ([Slides](/assets/02-vorlesung/slides.html), [Skript](/assets/02-vorlesung/02ln-classes-interfaces/), [Übungen](https://github.com/hsro-inf-fpk/02-classes-interfaces/))**
+- **Klassen und Interfaces (als Wiederholung!) ([Slides](/assets/02-vorlesung/slides.html) [Pdf](/assets/02-vorlesung/02-vorlesung.pdf), [Skript](/assets/02-vorlesung/02ln-classes-interfaces.md), [Übungen](https://github.com/hsro-inf-fpk/02-classes-interfaces/))**
 	
 	In dieser Session sehen wir uns verschiedene Typen von Klassen an: inner, anonymous, local, und static Klassen. Wann wird was benutzt und welche Sichtbarkeit haben sie?
 	Ausserdem: `@FunctionalInterface` und Lambda-Expressions.
 
-- **Vererbung (Wiederholung!) ([Slides](/assets/03-vorlesung/slides.html), [Skript](/assets/03-vorlesung/03ln-inheritance/), [Übungen](https://github.com/hsro-inf-fpk/03-inheritance))**
+- **Vererbung (Wiederholung!) ([Slides](/assets/03-vorlesung/slides.html), [Skript](/assets/03-vorlesung/03ln-inheritance.md), [Übungen](https://github.com/hsro-inf-fpk/03-inheritance))**
 	
 	Eine weitere Session, die sich mit Klassen beschäftigt. Allerdings mehr aus Sicht der Veerbung (ein wichtiges Konzept der OOP!). Hierzu sehen wir uns final und abstract Classes an, sowie virtuelle Funktionen und defaults.
 	Mit einem ersten Design-Pattern (Decorator) sollte das Thema dann abgerundet sein.
