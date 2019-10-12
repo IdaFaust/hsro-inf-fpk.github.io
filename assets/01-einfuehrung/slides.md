@@ -1,17 +1,10 @@
 
----
-title: 'Modul: Fortgeschrittene Programmierkonzepte (FPK)'
-subtitle: '01-Einführung'
-author: 'Dozent: Prof. Dr. Marcel Tilly'
-institute: 'Bachelor Informatik, Fakultät für Informatik'
-...
----
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 01-Einführung
+## 01 - Einführung
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 

@@ -1,17 +1,10 @@
 
----
-title: 'Modul: Fortgeschrittene Programmierkonzepte (FPK)'
-subtitle: '02-Vorlesung: Classes und Interfaces'
-author: 'Dozent: Prof. Dr. Marcel Tilly'
-institute: 'Bachelor Informatik, Fakultät für Informatik'
-...
----
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 02- Classes und Interfaces
+## 02 - Classes und Interfaces
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 
