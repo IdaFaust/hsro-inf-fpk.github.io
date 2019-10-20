@@ -32,6 +32,26 @@ code {
   left: 6em;
 }
 
+.column:first-of-type {float:left}
+.column:last-of-type {float:right}
+
+.split .column:first-of-type {width: 70%}
+.split .column:last-of-type {width: 30%}
+
+.split-50 .column:first-of-type {width: 50%}
+.split-50 .column:last-of-type {width: 50%; margin-left: 30pt}
+
+.left-column {
+  width: 50%;
+  float: left;
+}
+
+.right-column {
+  width: 40%;
+  float: right;
+  padding-left: 10pt;
+}
+
 .remark-slide-number {
   font-size: 10pt;
   margin-right: 10px;
@@ -47,7 +67,7 @@ code {
 
 .title-slide h2 {
   font-size: 1.8em;
-  margin-bottom: 40px;
+  margin-bottom: 80x;
 }
 
 .title-slide h3 {
@@ -64,7 +84,6 @@ code {
   background-size: 28%;
   border-bottom: 35px solid #F39100;
   padding-bottom: 0em;
-  vertical-align: 2em;
 }
 
 .remark-slide-content::after {
