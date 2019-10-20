@@ -25,11 +25,47 @@ Fakultät für Informatik, Cloud Computing
 # Where did we start?
 
 We looked at ...
+
 - classes and interfaces (foremost) in the context of information hiding and encapsulation
     - packages and modules
     - usage of public interfaces 
     - scope and visibility of classes 
     - accessability to implement functionality
+
+---
+
+# Bad Design
+
+.center[![:scale 70%](./img/cheops_bad.png)]
+
+---
+
+# Better ?
+
+.center[![:scale 70%](./img/cheops_good.png)]
+
+- Defined dependencies
+- Defined responsibilities
+- Clear build process
+
+---
+
+# What is the problem?
+
+.center[![:scale 70%](./img/circle.png)]
+
+- Circular dependency
+- Packaging is making it worth
+
+---
+
+# Packaging
+
+.center[![:scale 70%](./img/interface.png)]
+
+- Interfaces can help to decouple packages
+- Think about where to place things!
+- The bigger the system the more complicated 
 
 ---
 
@@ -79,6 +115,7 @@ class Rectangle extends Shape implements Drawable {
 # When to use what?
 
 Following the semantics of the keywords, you should
+
 - _extend_ a class, when you aim to make something more specific; a `Rectangle` will always be a `Shape`.
 - _implement_ an interface, when you aim to extend a class by certain (potentionally orthogonal) functionality; not every `Shape` might be drawable, and there might be other classes which happen to be drawable.
 
@@ -116,6 +153,7 @@ class Rectangle extends Shape {
 Why would you use abstract classes to begin with?
 
 Example: 
+
 - Insert entities into a database
 - Need to create SQL INSERT statements
 
@@ -157,6 +195,7 @@ class FWPM implements DBItem {
 # Is this good design?
 
 Please discuss with your neighbours:
+
 - Why is this bad or good design?
 - How to improve if necessary?
 
@@ -171,6 +210,7 @@ As you can see, the `makeInsertSQL` implementations are fairly similar, and dupl
 # Abstract Classes: Improved
 
 Ideas:
+
 - the mechanics of generating the SQL would be done once
 - the actual model classes would only provide the relevant details.
 
@@ -209,6 +249,7 @@ class Student extends DBItem {
 }
 ```
 Benefits:
+
 - The SQL statement is constructed solely in the `DBItem`
 - The INSERT statement only differs in table, fields and values.
 - The subclasses on the other hand provide the necessary information, but are agnostic of how to construct the queries.
@@ -219,6 +260,7 @@ Benefits:
 # Remarks: Abstract
 
 Note that 
+
 - a class with at least one `abstract` method must be declared `abstract`, too.
 - a subclass of an `abstract` class must either implement all abstract methods, or be declared `abstract` as well.
 - abstract classes that implement interfaces are not required to provide implementations for the interface methods.
@@ -290,6 +332,7 @@ class Base implements Intf {
 # But
 
 Note however, that this only works from *within* the class; from the outside, dynamic binding follows these rules: 
+
 - Instance methods are preferred over interface default methods.
 - Methods that are already overridden by other candidates are ignored.
 
