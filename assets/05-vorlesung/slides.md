@@ -9,6 +9,93 @@ Fakultät für Informatik, Cloud Computing
 
 ---
 
+# Enums
+
+- Enumerations serve the purpose of representing a group of named constants in a programming language.
+	- For example the 4 suits in a deck of playing cards may be 4 enumerators named `Club`, `Diamond`, `Heart`, and `Spade`, belonging to an enumerated type named Suit. 
+	- Other examples include natural enumerated types (like the planets, days of the week, colors, directions, etc.).
+- Enums are used when we know all possible values at compile time, such as choices on a menu, rounding modes, command line flags, etc. 
+- It is not necessary that the set of constants in an enum type stay fixed for all time.
+
+- In Java (from 1.5), enums are represented using enum data type. 
+- Java enums are more powerful than C/C++ enums . 
+- In Java, we can also add variables, methods and constructors to it. 
+- The main objective of enum is to define our own data types(Enumerated Data Types)
+
+---
+
+# Enum Declaration
+
+Enum declaration can be done outside a Class or inside a Class but not inside a Method. 
+
+```java
+// A simple enum example where enum is declared 
+// outside any class (Note enum keyword instead of 
+// class keyword) 
+enum Color 
+{ 
+    RED, GREEN, BLUE; 
+} 
+  
+public class Test 
+{ 
+    // Driver method 
+    public static void main(String[] args) 
+    { 
+        Color c1 = Color.RED; 
+        System.out.println(c1); 
+    } 
+}
+```
+
+---
+
+# Important things about Enums
+
+- Every enum internally implemented by using Class. 
+
+```java
+/* internally above enum Color is converted to */
+class Color
+{
+     public static final Color RED = new Color();
+     public static final Color BLUE = new Color();
+     public static final Color GREEN = new Color();
+}
+```
+
+- Every enum constant represents an object of type enum.
+- Enum type can be passed as an argument to switch statement. 
+- Every enum constant is always implicitly public static final. Since it is static, we can access it by using enum Name. Since it is final, we can’t create child enums.
+- All enums implicitly extend `java.lang.Enum` class.
+---
+
+# Interesting ...
+ 
+- As a class can only extend one parent in Java, so an enum cannot extend anything else.
+- `toString()` method is overridden in java.lang.Enum class,which returns enum constant name.
+- `enum` can implement many interfaces.
+
+```java
+// An enum (Note enum keyword inplace of class keyword) 
+enum Color 
+{ 
+    RED, GREEN, BLUE; 
+    // enum constructor called separately for each constant 
+    private Color() 
+    { 
+        System.out.println("Constructor called for : " + toString()); 
+    } 
+    // Only concrete (not abstract) methods allowed 
+    public void colorInfo() 
+    { 
+        System.out.println("Universal Color"); 
+    } 
+} 
+```
+
+---
+
 # Mixins in Java
 
 [Last week](/04ln-generics-1/), we showed how we can use default methods in interfaces to augment classes by certain functionality:
@@ -39,11 +126,11 @@ System.out.println(`m.escalated()`);       // "HELLO, WORLD"
 
 # Stateful Mixins
 
-- Conceptually, the difference between inheritance and mixins is that the latter are meaningless on its own and can be attached to other unrelated classes.
+Conceptually, the difference between inheritance and mixins is that the latter are meaningless on its own and can be attached to other unrelated classes.
 
-- On the other hand, inheritance is used if there is a strong relation between the classes.
+On the other hand, inheritance is used if there is a strong relation between the classes.
 
-The main issue with the above realization of mixins is the lack of _state_: since the iterfaces cannot have attributes, the only way to read/write data would be through (`public`) setters/getters.
+The main issue with the above realization of mixins is the lack of _state_: since the interfaces cannot have attributes, the only way to read/write data would be through (`public`) setters/getters.
 
 Example:
 Let's say, you want to gradually escalate your shouting.
@@ -60,8 +147,8 @@ m.escalate();  // "HELLO, WORLD!!!"
 
 # Using State
 
-This would require your `escalate` method to remember how often it was called, and add more bangs each time.
-Well fair enough, we'll use the same mechanis as for the `text`:
+This would require the `escalate()` method to remember how often it was called, and add more bangs each time.
+Well fair enough, we'll use the same mechanics as for the `text`:
 
 ```java
 interface Escalatable {
@@ -111,15 +198,17 @@ class App {
 
 ---
 
-# But!
+# Unfortunately...,
 
-Unfortunately, we require the implementation (and logic) of the `howOften` in the _class_ although it belongs to the _mixin_.
+... we have to implement the `howOften()` method in the _class_ although it belongs to the _mixin_.
+
 What we need is a way for the mixin to store and retrieve its state with the object.
-This is where we can make use of inheritance and interfaces as well as generic methods.
 
-First, we specify an interface `Stateful`, that specifies generic methods to store and retrieve the state.
-We use the `Class` object as key to store the state information and provide an `initial` value for the get method.
-The generic method allows us to avoid casts from `Object` to our actual state object.
+This is where we can make use of **inheritance** and **interfaces** as well as generic methods:
+
+- First, we specify an interface `Stateful`, that specifies generic methods to store and retrieve the state.
+- We use the `Class` object as key to store the state information and provide an `initial` value for the get method.
+- The generic method allows us to avoid casts from `Object` to our actual state object.
 
 ```java
 interface Stateful {
@@ -196,7 +285,9 @@ public class StatefulMessage
 
 ---
 
-# Finally
+# Finally...
+
+... we can use it:
 
 ```java
 class App {
@@ -237,7 +328,6 @@ Inheritance of classes (and interfaces) and generic methods, with relatively lit
 
 # Generics and Inheritance
 
-Speaking of inheritance and generics.
 Recall a principal property of inheritance: an instance of a subclass (e.g. `java.lang.Integer`) can be assigned to a reference of the base class (e.g. `java.lang.Number`); the same holds for arrays:
 
 ```java
@@ -255,7 +345,7 @@ Similarly, one would expect that the following works:
 ```java
 ArrayList<Number> as;
 ArrayList<Integer> is = new ArrayList<>();
-as = is;  // compiler error: incompatible types!
+as = is;  // what happens here?
 ```
 
 ---
@@ -572,7 +662,8 @@ This is where generics reach their limits: you can specify an upper bound for a 
 #### **Definition**: Liskov Substitution Principle: 
 
 ```
-if S is a subtype of T, then objects of type T may be replaced with objects of type S.
+if S is a subtype of T, 
+then objects of type T may be replaced with objects of type S.
 ```
 
 
