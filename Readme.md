@@ -44,7 +44,7 @@ _Pflichtmodul im [Bachelorstudiengang Informatik](https://www.th-rosenheim.de/te
 	
 	Mit dem Reflection API und Annotationen werden wir uns in dieser Session beschäftigen. Das gelingt am Besten an Hand von einigen Beispielen: Unit Tests mit ([JUnit5](http://junit.org/junit5/)), Serialization mit ([gson](https://github.com/google/gson)) und Networking mit ([retrofit](https://github.com/square/retrofit)).
 
-- **Design Pattern (Teil 1) ([Slides](/assets/07-vorlesung/slides.html), [Pdf](/assets/07-vorlesung/07-vorlesung.pdf), [Skript](/assets/07-vorlesung/07ln-iterator-composite-observer.md), Übungen: [JavaFX (recommended)](https://github.com/hsro-inf-fpk/07-composite-observer-jfx) or [Android (advanced)](https://github.com/hsro-inf-fpk/07-composite-observer))**
+- **Design Pattern (Teil 1) ([Slides](/assets/07-vorlesung/slides.html), [Pdf](/assets/07-vorlesung/07-vorlesung.pdf), [Skript](/assets/07-vorlesung/07ln-iterator-composite-observer.md), Übungen: [JavaFX (recommended)](https://github.com/hsro-inf-fpk/07-composite-observer-jfx) or [Android (advanced)](https://github.com/hsro-inf-fpk/07-composite-observer-android))**
 
 	Fun with Pattern! In dieser Session starten wir endlich mit Design-Pattern im Software Engeneering: Composite-, Iterator- und Observer-Pattern (ach ja, und wie kann man damit ein UI implementieren auf Android). Was ist eigentlich MVC/MVVC?
 
