@@ -93,7 +93,7 @@ As you can see, even primitive type like `int` or `float` have class objects (wh
 
 # Type Internals
 
-You can get evene more ...
+You can get even more ...
 
 ```java
 // family affairs...
@@ -162,8 +162,12 @@ String crazy = cons.newInstance(new byte[] {1, 2, 3, 4});
 
 ### Modifying Fields (Attributes)
 Remember [Rumpelstiltskin](https://en.wikipedia.org/wiki/Rumpelstiltskin)?
+
 In short: A very ambitious father claimed his daughter could produce gold.
-Put under pressure by the king, she cuts a deal with an imp: it spins the gold and in return she would sacrifice her first child -- _unless she could guess the imp's name!_
+Put under pressure by the king, she cuts a deal with an imp: it spins the gold and in return she would sacrifice her first child -- 
+
+
+_unless she could guess the imp's name!_
 
 ---
 
@@ -196,7 +200,11 @@ class Daughter {
 
 Since `Imp.name` is private, the imp feels safe (it's dancing around the fire pit...).
 But can we help the daugher save her firstborn?
-[Yes, we can!](https://en.wikipedia.org/wiki/Barack_Obama_presidential_campaign,_2008#Slogan)
+
+---
+
+# [Yes, we can!](https://en.wikipedia.org/wiki/Barack_Obama_presidential_campaign,_2008#Slogan)
+
 Using reflection, we will sneak through the imp's "head" to find the string variable that encodes the name.
 
 ```java
@@ -466,7 +474,7 @@ public @interface Fixed {
 This defines the annotation `@Fixed(...)` with three arguments; the last one is optional and defaults to the empty string.
 
 ```java
-@Fixed(author="riko493", date="2017-11-15")
+@Fixed(author="mustermann", date="2011-11-11")
 void method() { ... }
 ```
 
@@ -630,3 +638,26 @@ GitHubService service = retrofit.create(GitHubService.class);
 
 Call<List<Repo>> repos = service.listRepos("octocat");
 ```
+
+---
+
+# Summary
+
+Lessons learned today:
+
+- Reflections
+	- Classes, Methods, Attributes
+	- Security
+- Annotations
+- Frameworks
+	- Butterknofe
+	- GSON
+	- Retrofit
+
+---
+
+# Final Thought!
+
+.center[![:scale 40%](https://imgs.xkcd.com/comics/ui_vs_ux.png)]
+
+---
