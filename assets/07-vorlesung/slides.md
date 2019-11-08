@@ -160,16 +160,22 @@ There are 4 basic HTTP verbs we use in requests to interact with resources in a 
 - **PUT** — update a specific resource (by id)
 - **DELETE** — remove a specific resource by id
 
+Get a random Chuck Norris Joke:
+
+```shell
+curl -X GET
+```
+
 ---
 
 # A WebRequest in Java
 
 ```java
     public static void main(String[] args) throws Exception {
-        URL url = new URL("https://api.icndb.co/jokes/random");
+        URL url = new URL("https://api.icndb.com/jokes/random");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
-
+        con.connect();
         int status = con.getResponseCode();
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
@@ -178,6 +184,7 @@ There are 4 basic HTTP verbs we use in requests to interact with resources in a 
         while ((inputLine = in.readLine()) != null) {
             content.append(inputLine);
         }
+        System.out.println(content);
         in.close();
         con.disconnect();
     }
@@ -185,12 +192,26 @@ There are 4 basic HTTP verbs we use in requests to interact with resources in a 
 
 ---
 
-# Because it is Cumbersome...
+# Because it is cumbersome...
 
-... we can sue a framework: [Retrofit]()!
+... we can use a framework.
+
+[Retrofit](https://github.com/square/retrofit): consume REST interfaces without any pain
 
 ```java
+public interface ICNDBApi {
+  @GET("jokes/random")
+  Call<Sring>> getRandomJoke();
+}
 
+Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl("ttps://api.icndb.com/")
+	.
+    .build();
+
+ICNDBApi service = retrofit.create(ICNDBApi.class);
+Call<String> repos = service.getRandomJoke();
+S..
 ```
 
 ---
@@ -213,7 +234,7 @@ Toolset for a clear software architecture.
 
 # Recommended Reading
 
-<img src="/assets/design-pattern-amazon.jpg" alt="GOF" style="float: left; width: 30%; margin-right: 30px">
+<img src="../img/design-pattern-amazon.jpg" alt="GOF" style="float: left; width: 30%; margin-right: 30px">
 
 ## [Design Patterns](https://www.amazon.de/Patterns-Elements-Reusable-Object-Oriented-Software/dp/0201633612/)
 by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
@@ -224,7 +245,7 @@ by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
 # Class Diagrams
 
 .skip[
-![uml-class-relations](/assets/classdiagram.svg)
+![uml-class-relations](../img/classdiagram.svg)
 ]
 
 **Composition**: real-world whole-part relation
@@ -236,7 +257,7 @@ by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
 # Sequence Diagrams
 
 .skip.center[
-![uml-sequence-diagram](/assets/uml-sequence-diagram.svg)
+![uml-sequence-diagram](../img/uml-sequence-diagram.svg)
 ]
 
 ---
@@ -288,7 +309,7 @@ How does an iterator look like?
 
 # Iterator
 
-<img alt="iterator-uml" class="float-left w40" src="/assets/dp-iterator.svg">
+.center[![:scale 40%](../img/dp-iterator.svg)]
 
 ```java
 class SimpleList<T> implements BasicList<T> {
@@ -316,17 +337,13 @@ class SimpleList<T> implements BasicList<T> {
 
 # Composite
 
-.skip.center[
-![fashion shopping](/assets/dp-composite-ex.svg)
-]
+.center[![fashion shopping](../img/dp-composite-ex.svg)]
 
 ---
 
 # Composite
 
-.skip.center[
-![uml-composite](/assets/dp-composite.svg)
-]
+.center[![uml-composite](../img/dp-composite.svg)]
 
 ---
 
@@ -350,17 +367,13 @@ class SimpleList<T> implements BasicList<T> {
 
 # Observer
 
-.skip.center[
-![uml-observer-seq](/assets/dp-observer-seq.svg)
-]
+.center[![uml-observer-seq](../img/dp-observer-seq.svg)]
 
 ---
 
 # Observer
 
-.skip.center[
-![uml-observer](/assets/dp-observer.svg)
-]
+.center[![uml-observer](/assets/dp-observer.svg)]
 
 ---
 
