@@ -1,20 +1,197 @@
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 01- Design Pattern, pt. 1
+## 07 - Design Pattern, pt. 1
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 
 ---
 
-# Recommended Reading
+# Revisit
 
-<img src="/assets/design-pattern-amazon.jpg" alt="GOF" style="float: left; width: 30%; margin-right: 30px">
+- Reflection & JSON
+- REST APIs and how to call things
 
-## [Design Patterns](https://www.amazon.de/Patterns-Elements-Reusable-Object-Oriented-Software/dp/0201633612/)
-by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
+---
+
+# What is JSON
+
+- JSON stands for JavaScript Object Notation.
+- You can fin it here: [JSON](http://json.org)
+- JSON is a lightweight format for storing and transporting data
+- JSON is often used when data is sent from a server to a web page
+- JSON is "self-describing" and easy to understand
+
+```json
+{
+	"employees":[
+		{"firstName":"John", "lastName":"Doe"},
+		{"firstName":"Anna", "lastName":"Smith"},
+		{"firstName":"Peter", "lastName":"Jones"}
+	]
+}
+```
+
+---
+
+# How to Convert an Object into JSON?
+
+- JSON is nice for sotring and transporting.
+- JSON is used to serialization and deserialization
+
+```java
+public class Person {
+
+    private String firstName;
+    private String lastName;
+    private int age;
+
+    public Person(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+}
+```
+
+---
+
+# Use Reflection
+
+```java
+    public static String toJson(Object obj) throws IllegalAccessException {
+        StringBuffer sb = new StringBuffer("{");
+        Class cl = obj.getClass();
+        for (Field f: cl.getDeclaredFields()) {
+            f.setAccessible(true);
+            sb.append("\"" + f.getName() + "\" : ");
+            if (f.getType().equals(int.class)) sb.append(f.get(obj));
+            else sb.append("\"" + f.get(obj) + "\",");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        sb.append("}");
+        return sb.toString();
+    }
+```
+
+```java
+	public static void main(String[] args) throws Exception {
+		Person p = new Person("Max", "Mustermann", 33);
+		System.out.println(toJson(p));
+		//{"firstName" : "Max","lastName" : "Mustermann","age" : 3}
+    }
+```
+
+---
+
+# But this is cumbersome...
+
+... lets sue a framework: GSON
+
+```java
+    public static void main(String[] args) throws Exception {
+        Person p = new Person("Max", "Mustermann", 33);
+        String s = toJson(p);
+        System.out.println(s);
+        //{"firstName" : "Max","lastName" : "Mustermann","age" : 3}
+        Gson gson = new Gson();
+        Person p2 = gson.fromJson(s, Person.class);
+        System.out.println(p.equals(p2));
+
+    }
+    }
+```
+
+---
+
+# A Word about REST
+
+#### REST = **RE**presentational **S**tate **T**ransfer
+
+- REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web.
+- making it easier for systems to communicate with each other. 
+- REST-compliant systems, often called RESTful systems, are characterized by how they are stateless and separate the concerns of client and server.
+
+---
+
+# Statelessness
+
+- Systems that follow the REST paradigm are stateless, meaning that the server does not need to know anything about what state the client is in and vice versa. 
+- In this way, both the server and the client can understand any message received, even without seeing previous messages.
+- This constraint of statelessness is enforced through the use of resources, rather than commands. 
+- Resources are the nouns of the Web - they describe any object, document, or thing that you may need to store or send to other services.
+
+- Because REST systems interact through standard operations on resources, they do not rely on the implementation of interfaces.
+
+---
+
+# Making Requests
+
+REST requires that a client make a request to the server in order to retrieve or modify data on the server. 
+A request generally consists of:
+
+- an HTTP verb, which defines what kind of operation to perform
+- a header, which allows the client to pass along information about the request
+- a path to a resource
+- an optional message body containing data
+
+```shell
+curl -X GET
+```
+
+```shell
+wget
+```
+
+```shell
+curl -X POST
+```
+
+---
+
+# HTTP Verbs
+
+There are 4 basic HTTP verbs we use in requests to interact with resources in a REST system:
+
+- **GET** — retrieve a specific resource (by id) or a collection of resources
+- **POST** — create a new resource
+- **PUT** — update a specific resource (by id)
+- **DELETE** — remove a specific resource by id
+
+---
+
+# A WebRequest in Java
+
+```java
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("https://api.icndb.co/jokes/random");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+
+        int status = con.getResponseCode();
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer content = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            content.append(inputLine);
+        }
+        in.close();
+        con.disconnect();
+    }
+```
+
+---
+
+# Because it is Cumbersome...
+
+... we can sue a framework: [Retrofit]()!
+
+```java
+
+```
 
 ---
 
@@ -31,6 +208,16 @@ Patterns are based on principles of object-oriented programming.
 - composition, delegation and encapsulation
 
 Toolset for a clear software architecture.
+
+---
+
+# Recommended Reading
+
+<img src="/assets/design-pattern-amazon.jpg" alt="GOF" style="float: left; width: 30%; margin-right: 30px">
+
+## [Design Patterns](https://www.amazon.de/Patterns-Elements-Reusable-Object-Oriented-Software/dp/0201633612/)
+by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
+
 
 ---
 
