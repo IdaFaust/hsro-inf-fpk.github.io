@@ -573,7 +573,7 @@ public class App extends Application {
 
 # Basic Components
 
-![ui-controls](../img/ui-controls.png)
+.center[![:scale 50%](../img/ui-controls.png)]
 
 - `TextField` and `TextArea`
 - `Button`
