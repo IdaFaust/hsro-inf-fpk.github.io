@@ -9,20 +9,24 @@ Fakultät für Informatik, Cloud Computing
 
 ---
 
-# Revisit
+# Recap
 
-- Reflection & JSON
+- Reflection 
+- JSON
 - REST APIs and how to call things
 
+.center[![:scale 70%](../img/reflection.png)]
 ---
 
 # What is JSON
 
-- JSON stands for JavaScript Object Notation.
-- You can fin it here: [JSON](http://json.org)
+- JSON stands for _JavaScript Object Notation_.
+- You can find the _spec_ here: [JSON](http://json.org)
 - JSON is a lightweight format for storing and transporting data
 - JSON is often used when data is sent from a server to a web page
 - JSON is "self-describing" and easy to understand
+	- No strong schema validation, see XML and XMLSchema
+	- but there is [JSON Schema](https://json-schema.org)
 
 ```json
 {
@@ -38,8 +42,8 @@ Fakultät für Informatik, Cloud Computing
 
 # How to Convert an Object into JSON?
 
-- JSON is nice for sotring and transporting.
-- JSON is used to serialization and deserialization
+- _JSON is nice for storing and transporting_:
+**JSON is used to serialization and deserialization**
 
 ```java
 public class Person {
@@ -56,25 +60,40 @@ public class Person {
 }
 ```
 
+**How to serialize an object of this class to JSON?**
+
 ---
 
 # Use Reflection
 
+Idea: We can use the _reflection API_ to introspect and access data!
+
 ```java
-    public static String toJson(Object obj) throws IllegalAccessException {
-        StringBuffer sb = new StringBuffer("{");
+    public static String toJson(Object obj) {
+		StringBuffer sb = new StringBuffer("{");
+		
         Class cl = obj.getClass();
         for (Field f: cl.getDeclaredFields()) {
             f.setAccessible(true);
-            sb.append("\"" + f.getName() + "\" : ");
-            if (f.getType().equals(int.class)) sb.append(f.get(obj));
-            else sb.append("\"" + f.get(obj) + "\",");
-        }
-        sb.deleteCharAt(sb.length()-1);
+		
+			sb.append("\"" + f.getName() + "\" : ");
+			if (f.getType().equals(int.class)) 
+				sb.append(f.get(obj));
+			else 
+				sb.append("\"" + f.get(obj) + "\",");
+		}
+		
         sb.append("}");
-        return sb.toString();
+		
+		return sb.toString();
     }
 ```
+
+---
+
+# Would this work?
+
+Actually, this works great!
 
 ```java
 	public static void main(String[] args) throws Exception {
@@ -84,11 +103,15 @@ public class Person {
     }
 ```
 
+What about `fromJson()` and other data types, e.g. Date, float, arrays ...
+
 ---
 
-# But this is cumbersome...
+# This is cumbersome...
 
-... lets sue a framework: GSON
+... do not reinvent the wheel!
+
+Let's use a framework: [GSON](https://github.com/google/gson)
 
 ```java
     public static void main(String[] args) throws Exception {
@@ -96,11 +119,11 @@ public class Person {
         String s = toJson(p);
         System.out.println(s);
         //{"firstName" : "Max","lastName" : "Mustermann","age" : 3}
-        Gson gson = new Gson();
+		
+		Gson gson = new Gson();
         Person p2 = gson.fromJson(s, Person.class);
-        System.out.println(p.equals(p2));
-
-    }
+		System.out.println(p.equals(p2));
+		// true
     }
 ```
 
@@ -110,20 +133,26 @@ public class Person {
 
 #### REST = **RE**presentational **S**tate **T**ransfer
 
-- REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web.
+- REST, or **RE**presentational **S**tate **T**ransfer, is an architectural style for providing standards between computer systems on the web.
 - making it easier for systems to communicate with each other. 
 - REST-compliant systems, often called RESTful systems, are characterized by how they are stateless and separate the concerns of client and server.
+
+.center[![:scale 70%](../img/REST.png)]
 
 ---
 
 # Statelessness
 
-- Systems that follow the REST paradigm are stateless, meaning that the server does not need to know anything about what state the client is in and vice versa. 
-- In this way, both the server and the client can understand any message received, even without seeing previous messages.
-- This constraint of statelessness is enforced through the use of resources, rather than commands. 
-- Resources are the nouns of the Web - they describe any object, document, or thing that you may need to store or send to other services.
+- Systems that follow the REST paradigm are _stateless_
+	- meaning that the server does not need to know anything about what state the client is in and vice versa.
 
-- Because REST systems interact through standard operations on resources, they do not rely on the implementation of interfaces.
+- In this way, both the server and the client can understand any message received, **even without seeing previous messages**.
+
+- This constraint of statelessness is enforced through the use of _resources_, rather than _commands_.
+
+- _Resources_ describe any object, document, or thing that you may need to store or send to other services.
+
+- Because REST systems interact through standard operations (**CRUD**) on resources, they do not rely on the implementation of interfaces.
 
 ---
 
@@ -132,21 +161,23 @@ public class Person {
 REST requires that a client make a request to the server in order to retrieve or modify data on the server. 
 A request generally consists of:
 
-- an HTTP verb, which defines what kind of operation to perform
-- a header, which allows the client to pass along information about the request
-- a path to a resource
+- an **HTTP verb** (Standard Operation), which defines what kind of operation to perform
+- a **header**, which allows the client to pass along information about the request
+- a path to a resource (URL)
 - an optional message body containing data
 
 ```shell
-curl -X GET
+curl -X GET http://heise.de
 ```
 
 ```shell
-wget
+wget http://heise.de
 ```
 
 ```shell
-curl -X POST
+curl -d '{"key1":"value1", "key2":"value2"}' 
+     -H "Content-Type: application/json" 
+	 -X POST http://localhost:3000/data
 ```
 
 ---
@@ -163,33 +194,51 @@ There are 4 basic HTTP verbs we use in requests to interact with resources in a 
 Get a random Chuck Norris Joke:
 
 ```shell
-curl -X GET
+curl -X GET https://api.icndb.com/jokes/random
+```
+
+```json
+{ "type": "success", 
+  "value": { 
+	  "id": 273, "joke": "Chuck Norris does not kick ass and take
+	  names. In fact, Chuck Norris kicks ass and assigns the corpse
+	  a number. It is currently recorded to be in the billions.", 
+  "categories": [] } 
 ```
 
 ---
 
 # A WebRequest in Java
 
-```java
-    public static void main(String[] args) throws Exception {
-        URL url = new URL("https://api.icndb.com/jokes/random");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.connect();
-        int status = con.getResponseCode();
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer content = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
-        }
-        System.out.println(content);
-        in.close();
-        con.disconnect();
-    }
-```
+How would we implement a HTTPRequest in Java?
 
+- Use `URL`-class to represnet the Url
+- Use `HttpURLConnection`-class to connect to the server
+- `BufferedReader`and `InputStream` to read the request
+
+---
+
+# HTTPRequest in Java
+
+Get a joke from ICNDB:
+
+```java
+public static void main(String[] args) throws Exception {
+	URL url = new URL("https://api.icndb.com/jokes/random");
+	HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	con.setRequestMethod("GET");
+	con.connect();
+	BufferedReader in = new BufferedReader(
+			new InputStreamReader(con.getInputStream()));
+	String inputLine;
+	StringBuffer content = new StringBuffer();
+	while ((inputLine = in.readLine()) != null) {
+		content.append(inputLine);
+	}
+	// close resources here!
+}	
+```
+**Can you make it a base class and design your own typed version?**
 ---
 
 # Because it is cumbersome...
@@ -203,15 +252,15 @@ public interface ICNDBApi {
   @GET("jokes/random")
   Call<Sring>> getRandomJoke();
 }
-
+```
+```java
 Retrofit retrofit = new Retrofit.Builder()
-    .baseUrl("ttps://api.icndb.com/")
-	.
-    .build();
-
-ICNDBApi service = retrofit.create(ICNDBApi.class);
+		.baseUrl("https://api.icndb.com/")
+		.addConverterFactory(ScalarsConverterFactory.create())
+		.build();
+ICNDBApi2 service = retrofit.create(ICNDBApi2.class);
 Call<String> repos = service.getRandomJoke();
-S..
+String s = repos.execute().body();
 ```
 
 ---
@@ -224,9 +273,11 @@ Shared vocabulary for developers
 - common ground for talking about architecture
 - less talking, more doing
 
-Patterns are based on principles of object-oriented programming.
+_Design Patterns_ are based on principles of object-oriented programming.
 - interfaces, inheritance
 - composition, delegation and encapsulation
+
+**There are 23 established patterns in different categories: creational, structural and behavioral.**
 
 Toolset for a clear software architecture.
 
@@ -244,9 +295,13 @@ by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
 
 # Class Diagrams
 
-.skip[
-![uml-class-relations](../img/classdiagram.svg)
-]
+.center[![:scale 99%](../img/classdiagram.svg)]
+
+**Association**: References a ...
+
+**Inheritance**: _Is-A_ relation
+
+**Implements**: behavioral relation
 
 **Composition**: real-world whole-part relation
 
@@ -256,20 +311,20 @@ by Gamma/Helm/Johnson/Vlissides (_Gang of Four_).
 
 # Sequence Diagrams
 
-.skip.center[
-![uml-sequence-diagram](../img/uml-sequence-diagram.svg)
-]
+.center[![:scale 60%](../img/uml-sequence-diagram.svg)]
+
+In contrast to class diagrams, _sequence diagrams_ (sometimes: interaction diagrams) describe how _objects_ interact with each other.
+They are read top to bottom, and following the arrows
 
 ---
 
-# Iterator
+# Iterator-Pattern
+
+Let's assume, you want to provide a way to iterator over your own data structure wihtout exposing the internals (_information hiding_):
 
 ```java
 SimpleList<Integer> list = SimpleList<>(3, 1, 3, 3, 7);
 ```
-
-.container[
-.column[
 
 ```java
 int i = 0;
@@ -278,21 +333,7 @@ for ( ; i < list.size(); ) {
 	i++;
 }
 ```
-]
 
-.column[
-
-```java
-int i = 0;
-while (i < list.size()) {
-	System.out.println(list.get(i));
-	i++;
-}
-```
-]
-]
-
-.container[
 
 ```java
 Iterator<Integer> it = list.???;
@@ -301,15 +342,12 @@ while (it.hasNext()) {
 	Integer v = it.next();
 }
 ```
-]
 
-How does an iterator look like?
+**How does an iterator look like?**
 
 ---
 
-# Iterator
-
-.center[![:scale 40%](../img/dp-iterator.svg)]
+# Iterator-Pattern
 
 ```java
 class SimpleList<T> implements BasicList<T> {
@@ -335,15 +373,38 @@ class SimpleList<T> implements BasicList<T> {
 
 ---
 
-# Composite
+# UML: Iterator-Pattern
 
-.center[![fashion shopping](../img/dp-composite-ex.svg)]
+The iterator is a _behavioral_ pattern.
+
+Typically, the `ConcreteIterator<T>` is implemented as an inner, local or anonymous class within the `ConcreteAggregate<T>`, since intimate knowledge (and access!) of the data structure is required.
+
+.center[![:scale 40%](../img/dp-iterator.svg)]
+
+
 
 ---
 
-# Composite
+# Composite-Pattern
 
-.center[![uml-composite](../img/dp-composite.svg)]
+Let's say, you shop for fashion online and order a shirt, pants and a pair of shoes.
+Most likely, you will get shipped one package, that contains the shirt, pants and another box, that contains the shoes.
+
+.center[![:scale 70%](../img/dp-composite-ex.svg)]
+
+So obviously, a box can contain a box can contain a box, etc.
+If we wanted to count of all the _individual items_ (rather than the boxes), we would need to unbox if we hit a box.
+---
+
+# UML: Composite-Pattern
+
+The composite is a _structural_ pattern.
+
+This architecture separates the data _structure_ (the potential nesting of objects) from the _logic_ (how many items per piece).
+
+The composite is characterized by an inheriting class that overwrites a (often abstract) method, while being composed of instances of the base class.
+
+.center[![:scale 80%](../img/dp-composite.svg)]
 
 ---
 
@@ -365,44 +426,53 @@ class SimpleList<T> implements BasicList<T> {
 
 ---
 
-# Observer
+# Observer-Pattern
 
-.center[![uml-observer-seq](../img/dp-observer-seq.svg)]
+The classic example for the observer pattern used to be newspapers.
+But it seems the new classic is to "follow" somebody's updates on social networks, or join a messenger broadcast group (formerly: mailing lists, listserve).
 
----
+Let's consider the latter: you join (_subscribe to_) a messenger broadcast group.
+From then on, you receive (_observe_) all messages, until you leave (_unsubscribe from_) the group.
 
-# Observer
-
-.center[![uml-observer](/assets/dp-observer.svg)]
-
----
-
-# Android
-
-.container[
-.column.w40[
-![Android OS](/assets/android-robot.svg)
-]
-
-.column.w40[
-![Android design](/assets/android-design.png)
-]
-]
-
-.container[
-_Don't panic: this is neither a GUI nor a mobile development class!_
-]
+.center[![:scale 50%](../img/dp-observer-seq.svg)]
 
 ---
 
-# Model-View-Controller
+# Observer-Pattern
 
-.container[
+As you can see, there is some basic logic to be implemented for managing and notifying the subscribers.
+The Java library provides us with the [abstract class `java.util.Observable`](https://docs.oracle.com/javase/8/docs/api/java/util/Observable.html) and the [interface `java.util.Observer`](https://docs.oracle.com/javase/8/docs/api/java/util/Observer.html).
+The following class diagram illustrates their relation:
+
+.center[![:scale 80%](../img/dp-observer.svg)]
+
+The observer is a _behavioral_ pattern, and sometimes referred to as publish/subscribe.
+It is most used to react to events that are not in control of the program (user interactions, networking errors, etc.)
+
+---
+
+# Examples and Variants
+
+- Excel: The Graph subscribes to the cells, updates on change.
+- some variants use `update()` without reference or info data
+- GUI: user interactions such as `OnClickListener`, `OnSelectionChanged`, etc.
+- I/O: device (disk) or connection (network) changes
+- interrupts: power, usb, etc.
+- databases: inserts, updates, deletes
+
+
+---
+
+class: split-50
+
+# Model-View-Controller Pattern
+
+
 .column[
-![MVC](/assets/mvc.svg)
+![MVC](../img/mvc.svg)
 ]
 
-.column.w60[
+.column[
 **Model**: 
 - current data and state of the app
 - Java program
@@ -415,11 +485,8 @@ _Don't panic: this is neither a GUI nor a mobile development class!_
 - business logic (by you)
 - user input (provided by Android OS)
 ]
-]
 
-.container[
 _Sometimes you will see Model-View-Viewcontroller (MVVC) or Model-View-Viewmodel (MVVM), adding an intermediate layer._
-]
 
 ---
 
@@ -427,22 +494,17 @@ _Sometimes you will see Model-View-Viewcontroller (MVVC) or Model-View-Viewmodel
 
 Data structures, entity types, auxiliary types.
 
-Core algorithms to load, store, organize and transform data.*
+Core algorithms to load, store, organize and transform data.
 
-Typically implemented in (pure) Java.**
+Typically implemented in (pure) Java.
 
 Examples:
 - `Joke` class to store jokes from ICNDB
 - networking code to retrieve jokes from ICNDB
 - internal cache to store jokes
 
-.skip[
-*strictly speaking, _model_ only refers to data; that's why some talk of MVVM or MVVC
-]
+Strictly speaking, _model_ only refers to data; that's why some talk of MVVM or MVVC
 
-.skip[
-**you can also use meta languages or reference native libraries
-]
 
 ---
 
@@ -455,20 +517,20 @@ Text views, buttons, lists, images, etc.
 Typically implemented using a certain XML format, which is then "inflated" by a loader program.
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical" >
-    <TextView android:id="@+id/text"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="I am a TextView" />
-    <Button android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="I am a Button" />
-</LinearLayout>
+<?xml version="1.0" encoding="UTF-8"?>
+<GridPane fx:controller="MainController">
+	<columnConstraints>
+		<ColumnConstraints hgrow="NEVER" />
+		<ColumnConstraints hgrow="ALWAYS" />
+	</columnConstraints>
+	<Button fx:id="btnRefresh" text="Refresh" 
+			GridPane.columnIndex="0" GridPane.rowIndex="0">
+	<ListView fx:id="mealsL	ist" 
+			GridPane.columnIndex="0" GridPane.columnSpan="3" 
+			GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"
+			GridPane.vgrow="ALWAYS" />
+</GridPane>
+
 ```
 
 ---
@@ -485,71 +547,35 @@ Typically implemented in Java, by triggering certain logic on a certain event.
 
 ---
 
-# Android: Basic Building Blocks (1)
+# JavaFX: Basic Building Blocks (1)
 
-- see the [base project](https://github.com/hsro-inf-prg3/07-composite-observer) for this weeks assignment
-- an _app_ consists of at least one _activity_ or _service_
-	+ services run in the background (not covered here)
-	+ activities run in the foreground, and require a main view
-
-- no more `public static void main(String... args)`, but main activity
-	+ configured in `AndroidManifest.xml`, typically `MainActivity`
+- see the [base project](https://github.com/hsro-inf-fpk/07-composite-observer-jfx) for this weeks assignment
+- Main entry point is the _Application_ 
+- Still nice that the Application is still launched via `public static void main(String... args)`
 
 ```java
-public class MainActivity extends AppCompatActivity {
+public class App extends Application {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        // this will inflate the layout from res/layout/activity_main.xml
-        setContentView(R.layout.activity_main);
-        
-        // add your code to be run at startup here
-    }
-}
-```
-
----
-
-# Basic Building Blocks (2)
-
-Every activity needs a layout.
-
-`R.layout.activity_main` points to `res/layout/activity_main.xml`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="de.fhro.inf.prg3.a07.MainActivity">
-    <TextView
-    	android:id="@+id/myTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+	public static void main(String[] args) {
+		launch(args);
+	}
+	@Override
+	public void start(Stage stage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().
+			getResource("views/main.fxml"));
+		stage.setTitle("My App");
+		stage.show();
+	}
+}}
 ```
 
 ---
 
 # Basic Components
 
-<https://developer.android.com/guide/topics/ui/controls.html>
+![ui-controls](../img/ui-controls.png)
 
-![ui-controls](/assets/ui-controls.png)
-
-- `TextField` (single and multiline)
-- `TextInput`
+- `TextField` and `TextArea`
 - `Button`
 - `CheckBox` and `RadioButton`
 - `ListView`
@@ -559,51 +585,61 @@ Every activity needs a layout.
 # Referencing Components on the Screen
 
 You can get a handle on the components rendered on the screen.
-- set the `android:id` field in the XML layout
-- inside the activity code, use the `findViewById()` function with that id
+- set the `fx:id` field in the XML layout
+- inside the controller code, use the `@FXML` annotation with that correct `fx:id` name
 
 ```java
-public class MainActivity extends AppCompatActivity {
+public class MainController implements Initializable {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-        // see android:id="@+id/myTextView"
-        TextView tv = (TextView) findViewById(R.id.myTextView);
-    }
-}
+	// use annotation to tie to component in XML
+	@FXML
+	private Button btnRefresh;
+
+	@FXML
+	private ListView<String> mealsList;
 ```
 
 ---
 
 # Wiring Components and User Input
 
-<https://developer.android.com/guide/topics/ui/ui-events.html>
-
 Components can react to certain user input, for example
-- _click_, using the `setOnClickListener()`
-- _long click_, using the `setOnLongClickListener()`
-- and a few others
+- _click_, using the `setOnAction()`
+- _
 
 ```java
-Button button = (Button) findViewById(R.id.myButton);
-button.setOnClickListener(new View.OnClickListener() {
-	@Override
-	public void onClick(View v) {
-		// do something
+public class MainController implements Initializable {
+
+...
+	public void initialize(URL location, ResourceBundle resources) {
+		// set the event handler (callback)
+		btnRefresh.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				// here you can react on the event				
+			}
+		});
 	}
-});
+}
 ```
 
 ---
 
 # A Word on Logging
 
-`System.out` etc. don't work (no terminal, no service!)
+`System.out` etc. normally doesn't work (no terminal, no service!)
 
-Use a _toast_ instead:
+
+Use system logging services (rendered to logcat):
+
+```java
+import import java.util.logging.Logger;
+// ...
+Logger logger = Logger.getLogger(OpenMensaAPITests.class.getName());
+logger.info("Hello, world!");
+```
+
+Use a _toast_ (Android Apps) instead:
 
 ```java
 Context context = getApplicationContext();
@@ -612,15 +648,6 @@ int duration = Toast.LENGTH_SHORT;
 
 Toast toast = Toast.makeText(context, text, duration);
 toast.show();
-```
-
-Or use system logging services (rendered to logcat):
-
-```java
-import import java.util.logging.Logger;
-// ...
-Logger logger = Logger.getLogger(OpenMensaAPITests.class.getName());
-logger.info("Hello, world!");
 ```
 
 ---
@@ -635,3 +662,11 @@ logger.info("Hello, world!");
 	+ you can't run IO (networking, files) on the GUI thread
 	+ you can run services without an open activity (think Dropbox!)
 - getting from one activity to another, you need to [understand the intent mechanism](https://developer.android.com/guide/components/intents-filters.html)
+
+---
+
+# Final Thought!
+
+.center[![:scale 40%](https://imgs.xkcd.com/comics/explorers.png)]
+
+---

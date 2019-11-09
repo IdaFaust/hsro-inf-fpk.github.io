@@ -6,7 +6,7 @@ permalink: /07ln-iterator-composite-observer/
 # Design Patterns, pt. 1
 
 This class is the first of a series of three where we will look at patterns that emerged for solving frequent architectural problems.
-They work as a shared vocabulary for developers, as a common ground for taking about architecture.
+They work as a shared vocabulary for developers, as a common ground for talking about architecture.
 With short names for every-day situations, there is less talking and more doing.
 
 These _design patterns_ are based on principles of object-oriented programming.
@@ -31,7 +31,7 @@ Grady Booch, Foreword to Design Patterns, 1994(!)
 Since we will be talking a lot about software architecture in the next three weeks, let's talk about _class diagrams_.
 The following diagram shows the six most frequent types of relations for UML class diagrams.
 
-![uml-class-relations](/assets/classdiagram.svg)
+![uml-class-relations](../img/classdiagram.svg)
 
 An _association_, directed or undirected, is the most generic relation between classes; typically the arrow will be labeled for clarity.
 
@@ -53,7 +53,7 @@ In contrast to class diagrams, _sequence diagrams_ (sometimes: interaction diagr
 They are read top to bottom, and following the arrows
 
 
-![sequence-diagram](/assets/uml-sequence-diagram.svg)
+![sequence-diagram](../img/uml-sequence-diagram.svg)
 
 > Note: The UML diagrams listed in these lecture notes are based on Gamma _et al._'s diagrams, often with small modifications for clarity.
 
@@ -292,7 +292,7 @@ for (Integer i : list) {
 
 ### UML Diagram
 
-![iterator pattern](/assets/dp-iterator.svg)
+![iterator pattern](../img/dp-iterator.svg)
 
 Typically, the `ConcreteIterator<T>` is implemented as an inner, local or anonymous class within the `ConcreteAggregate<T>`, since intimate knowledge (and access!) of the data structure is required.
 
@@ -305,7 +305,7 @@ For the composite, consider a rather practical example.
 Let's say, you shop for fashion online and order a shirt, pants and a pair of shoes.
 Most likely, you will get shipped one package, that contains the shirt, pants and another box, that contains the shoes.
 
-![fashion shopping](/assets/dp-composite-ex.svg)
+![fashion shopping](../img/dp-composite-ex.svg)
 
 So obviously, a box can contain a box can contain a box, etc.
 If we wanted to count of all the _individual items_ (rather than the boxes), we would need to unbox if we hit a box.
@@ -344,7 +344,7 @@ This is a bit unfortunate: any time we add a new class of items (e.g. `Jacket`),
 
 Composite to the rescue: with a clever combination of inheritance and composition, we can maintain the expressiveness of a diverse class hierarchy while keeping logic to where it belongs.
 
-![composite](/assets/dp-composite-ex-2.svg)
+![composite](../img/dp-composite-ex-2.svg)
 
 ```java
 abstract class Shipment {
@@ -378,7 +378,7 @@ The composite is characterized by an inheriting class that overwrites a (often a
 
 ## UML Diagram
 
-![composite](/assets/dp-composite.svg)
+![composite](../img/dp-composite.svg)
 
 The composite is a _structural_ pattern.
 
@@ -413,13 +413,13 @@ From then on, you receive (_observe_) all messages, until you leave (_unsubscrib
 
 Here is an example sequence diagram; whoever provides the data is _observable_, the interested subscribers are the _observers_.
 
-![uml-observer-seq](/assets/dp-observer-seq.svg)
+![uml-observer-seq](../img/dp-observer-seq.svg)
 
 As you can see, there is some basic logic to be implemented for managing and notifying the subscribers.
 The Java library provides us with the [abstract class `java.util.Observable`](https://docs.oracle.com/javase/8/docs/api/java/util/Observable.html) and the [interface `java.util.Observer`](https://docs.oracle.com/javase/8/docs/api/java/util/Observer.html).
 The following class diagram illustrates their relation:
 
-![uml-observer](/assets/dp-observer.svg)
+![uml-observer](../img/dp-observer.svg)
 
 The observer is a _behavioral_ pattern, and sometimes referred to as publish/subscribe.
 It is most used to react to events that are not in control of the program (user interactions, networking errors, etc.)
@@ -437,10 +437,7 @@ It is most used to react to events that are not in control of the program (user 
 
 # Digression: Android and MVC
 
-> Neither MVC or Android are essential to this class.
-> However, Android is an excellent means to demonstrate design patterns "in the wild," so we use them in the assignments to make them more meaningful and hands-on.
- 
-See [slides, from #13](/07s-iterator-composite-observer/#3).
-
+> Neither MVC, JavaFX or Android are essential to this class.
+> However, JavaFX or Android are excellent means to demonstrate design patterns "in the wild," so we use them in the assignments to make them more meaningful and hands-on.
 
 <p style="text-align: right">&#8718;</p>
