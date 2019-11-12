@@ -1,9 +1,9 @@
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 04- Generics
+## 04 - Generics
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 
@@ -651,9 +651,6 @@ Lessons today...
 
 ---
 
-
 # Final Thought!
 
 .center[![:scale 40%](https://imgs.xkcd.com/comics/loop.png)]
-
----

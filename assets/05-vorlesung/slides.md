@@ -1,9 +1,9 @@
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 05- Mixins and Generics (II)
+## 05 - Mixins and Generics (II)
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 
@@ -799,11 +799,8 @@ Effective Java (2nd Edition), Item 28, summarizes what wildcards should be used 
 
 Read more on [wildcards in the Java docs](https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html).
 
-
 ---
 
 # Final Thought!
 
 .center[![:scale 40%](https://imgs.xkcd.com/comics/haskell.png)]
-
----

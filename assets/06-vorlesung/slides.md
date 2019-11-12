@@ -1,9 +1,9 @@
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 06- Reflection und Annotations
+## 06 - Reflection und Annotations
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 
@@ -659,5 +659,3 @@ Lessons learned today:
 # Final Thought!
 
 .center[![:scale 40%](https://imgs.xkcd.com/comics/ui_vs_ux.png)]
-
----

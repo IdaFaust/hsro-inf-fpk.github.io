@@ -1,9 +1,9 @@
 class: title-slide  
 
-# Modul- Fortgeschrittene Programmierkonzepte
+# Modul - Fortgeschrittene Programmierkonzepte
 ### Bachelor Informatik
 
-## 03- Inheritance
+## 03 - Inheritance
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
 
@@ -642,11 +642,8 @@ We have learned about...
 - the diamond problem
 - decorator pattern
 
-
 ---
 
 # Final Thought!
 
 .center[![:scale 40%](https://imgs.xkcd.com/comics/norm_normal_file_format.png)]
-
----

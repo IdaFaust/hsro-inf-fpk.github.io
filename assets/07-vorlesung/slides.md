@@ -668,5 +668,3 @@ toast.show();
 # Final Thought!
 
 .center[![:scale 40%](https://imgs.xkcd.com/comics/explorers.png)]
-
----
