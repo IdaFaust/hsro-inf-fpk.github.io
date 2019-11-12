@@ -1,10 +1,10 @@
 title: "Fortgeschrittene Programmierkonzepte (FPK)"
-email: korbinian.riedhammer@fh-rosenheim.de
+email: marcel.tilly@th-rosenheim.de
 description: "Materialien zum Pflichtmodul Fortgeschrittene Programmierkonzepte"
 baseurl: ""
 url: "https://hsro-inf-fpk.github.io"
 exclude: ["LICENSE", "Remarks.md", "examples"]
-github_username: ["sikoried"]
+github_username: ["matowrx"]
 
 # Build settings
 markdown: kramdown
