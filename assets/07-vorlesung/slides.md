@@ -9,6 +9,34 @@ Fakultät für Informatik, Cloud Computing
 
 ---
 
+# Projekt
+
+### Bullshit Bingo
+
+Eine Web Aplikation, die einem Admin gestattet eine Bullshit Bingo Session zu definieren un zu starten. USer können sich gegen diese Session verbinden, erhalten ein zufällig zusammgesetzte Matrix und können in dieser Felder markieren. Wer einen Reihe oder Spalte voll hat, hat gewonnen!
+
+- Als _Admin_ gebe ich Begriffe vor
+- Als _Admin_ starte ich ein Session, ich bekomme eine eindeutige SessionId
+- Als _User_ verbinde ich mich zu einer Session
+- Als _User_ kann ich Felder markieren
+
+- Als _System_ kann ich prüfen, ob Eingabe korrekt sind (vergleich über mehrere User)
+- Als _System_ kann ich den Gewinner ermitteln
+
+Vorteile: Einfaches Setup, kein Papier!
+
+---
+
+# Programmieren Intensivierung
+
+** Heute in der 3. Übung **
+
+**Thema**: Vererbung, Bäume an Hand einer Aufgabe aus OOP (letztes Semester)
+
+Ausserdem: Projekte wer mag!
+
+---
+
 # Recap
 
 - Reflection 

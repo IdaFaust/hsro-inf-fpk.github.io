@@ -80,7 +80,7 @@ Example:
 
 - Send text messages (`Message`)
 - `EscalatedMessage` by using all-caps (_scream_).
-- `UnicodeMessage` for fancy smileys 😎
+- `UnicodeMessage` for fancy smileys :-)
 
 .center[![:scale 40%](../img/mixin-diamond-1.svg)]
 
