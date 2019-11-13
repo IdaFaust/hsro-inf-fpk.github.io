@@ -3,9 +3,6 @@
 python -m http.server &
 PID=$!
 
-echo $1
-echo $2
-
 for FILE in ./assets/*
 do
     if [ -d $FILE ]
@@ -15,7 +12,7 @@ do
         NAME="$(cut -d'/' -f3<<<"$FILE")"
         echo $NAME
         NR="$(cut -d'-' -f1<<<"$NAME")"
-        echo $NR
+
         if [ $1 = "--d" ]; 
         then
             echo "--d"
