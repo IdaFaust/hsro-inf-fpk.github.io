@@ -19,7 +19,7 @@ do
             if [ $2 = $NR ]; 
             then
                 echo "Generate PDF for $NAME..."
-                decktape remark http://localhost:8000/assets/$NAME/slides.html $NAME.pdf
+                decktape remark http://localhost:8000/assets/slides.html?$NAME $NAME.pdf
                 echo ".. done!"
             fi
         elif [ $1 = "--a" ];
@@ -28,7 +28,7 @@ do
             if [ ./slides.md -nt ./$NAME.pdf ];
             then
                 echo "Generate PDF for $NAME..."
-                decktape remark http://localhost:8000/assets/$NAME/slides.html $NAME.pdf
+                decktape remark http://localhost:8000/assets/slides.html?$NAME $NAME.pdf
                 echo ".. done!"
             fi
             echo "--"
@@ -38,7 +38,7 @@ do
             if [ -e ./slides.md ];
             then
                 echo "Generate PDF for $NAME..."
-                decktape remark http://localhost:8000/assets/$NAME/slides.html $NAME.pdf
+                decktape remark http://localhost:8000/assets/slides.html$NAME $NAME.pdf
                 echo ".. done!"
             fi
         fi

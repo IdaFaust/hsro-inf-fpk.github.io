@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TH Rosenheim - Vorlesung WIF IT-Systeme</title>
+    <title>TH Rosenheim - Vorlesung INF FPK</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="https://sfc-arch.github.io/remark/downloads/remark-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
   </head>
   <body>
 
@@ -15,11 +15,25 @@
           return '<img src="' + url + '" style="width: ' + percentage + '" />';
         };
         
-        var slideshow = remark.create({ sourceUrl: "skript.md"});
+        // convert parameter to folder
+        var side = window.location.search.substring(1);
+        var slideshow = remark.create({ sourceUrl: "./" + side + "/slides.md"});
+
+        // replace image pfad  
+        var images = document.getElementsByTagName("img");
+        for (var i=0; i < images.length; i++) {
+          var image = images[i];
+          if (image.src.startsWith(document.location.origin)) {
+            var url = image.attributes["src"].value.replace("../", "assets/" );
+            url = url.replace("./", "assets/" + side + "/" );
+            images[i].src = document.location.origin + "/" + url;
+          }
+        }
 
         // Setup MathJax
         MathJax.Hub.Config({
             tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
             skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
             }
         });
