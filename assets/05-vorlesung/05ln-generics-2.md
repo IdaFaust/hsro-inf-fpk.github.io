@@ -178,7 +178,7 @@ class App {
 
 This way, we utilize inheritance of classes (and interfaces) and generic methods, with relatively little impact on the overall class hierarchy:
 
-![Mixin Stateful](/assets/mixin-stateful.svg)
+![Mixin Stateful](../img/mixin-stateful.svg)
 
 
 # Generics and Inheritance
@@ -217,7 +217,7 @@ ArrayList<Integer> al = new ArrayList<>();
 li = al;  // ok, since ArrayList implements List!
 ```
 
-![generics and inheritance](/assets/generics-inheritance.svg)
+![generics and inheritance](../img/generics-inheritance.svg)
 
 Note that as a side effect of this relation, the following code compiles, but fails at runtime:
 
@@ -445,7 +445,7 @@ This is where generics reach their limits: you can specify an upper bound for a 
 
 Languages supporting generics (such as Java or Scala, and to some extent C++), feature _covariance_ and _contravariance_, which are best described in the following diagram by [Oleg Shelajev at RebelLabs](https://zeroturnaround.com/rebellabs/java-generics-cheat-sheet/) (based on a diagram by [Andrey Tyukin](https://stackoverflow.com/users/2707792/andrey-tyukin) available under the CC-BY-SA).
 
-![PECS](/assets/Java-Generics-cheat-sheet-graphic-v1.png)
+![PECS](../img/Java-Generics-cheat-sheet-graphic-v1.png)
 
 The combination of the two principles (contravariance and covariance) is known as _PECS_ -- _producer `extends`, consumer `super`_.
 The mnemonic is seen from the collection's point of view.

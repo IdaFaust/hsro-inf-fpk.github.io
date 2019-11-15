@@ -116,7 +116,7 @@ Most developers opt for the _lazy initialization_ method, since it makes the ini
 
 ## Structure and Participants
 
-![dp-singleton](/assets/dp-singleton.svg)
+![dp-singleton](../img/dp-singleton.svg)
 
 - `Singleton`
 	+ typically responsible for managing its unique instance
@@ -177,7 +177,7 @@ Collections.sort(list, new Comparator<Integer>() {
 
 Check out [JavaKara](https://www.swisseduc.ch/informatik/karatojava/javakara/), a little robot bug that can be moved through a tiny world.
 
-![kara-explore](/assets/kara-explore.png)
+![kara-explore](../img/kara-explore.png)
 
 You can control it with very basic actions:
 
@@ -204,14 +204,14 @@ To have kara explore the whole room (starting from the center), you could think 
 - walk concentric growing circles until the room is fully explored
 - walk to the top-right corner; then sweep left-to-right, top-to-bottom.
 
-The sample code can be found in <https://github.com/hsro-inf-prg3/hsro-inf-prg3.github.io/tree/master/examples/src/main/java/designpattern/strategy>.
+The sample code can be found in <https://github.com/hsro-inf-fpk/hsro-inf-fpk.github.io/tree/master/examples/src/main/java/designpattern/strategy>.
 Check out the `StrategyExampleBad`, which has two explicit plans, `planA()` and `planB()`.
 Contrast it with the implementation in `StrategyExample`: here, the logic of the strategy is moved to a separate class which is instantiated as needed.
 
 
 ## Structure
 
-![dp-strategy](/assets/dp-strategy.svg)
+![dp-strategy](../img/dp-strategy.svg)
 
 
 ## Discussion
@@ -301,7 +301,7 @@ As you can see, the _user_ of the package relies on the interface, and has no id
 
 ## A More Sophisticated Example: Factory and Strategy
 
-Recall last week's [composite pattern](/07ln-iterator-composite-observer/) which can be found for example in the implementation of JSON or an XML tree.
+Recall last week's [composite pattern](./07ln-iterator-composite-observer/) which can be found for example in the implementation of JSON or an XML tree.
 In principal, both can store key-value relations, potentially nested:
 
 ```json
@@ -385,12 +385,12 @@ System.out.println(root);
 
 As you can see, you only need to replace the factory that produces the concrete clases; the construction logic remains the same.
 
-You can find the above example code at <https://github.com/hsro-inf-prg3/hsro-inf-prg3.github.io/tree/master/examples/src/main/java/designpattern/factory>.
+You can find the above example code at <https://github.com/hsro-inf-fpk/hsro-inf-fpk.github.io/tree/master/examples/src/main/java/designpattern/factory>.
 
 
 ## Structure and Participants
 
-![dp-factory](/assets/dp-abstract-factory.svg)
+![dp-factory](../img/dp-abstract-factory.svg)
 
 - `AbstractFactory`
 	+ declares interface for operations that create the abstract products
@@ -428,7 +428,7 @@ Typically objects that are either complicated to instantiate or which should not
 Let's get back to kara for a moment.
 We could write a program that takes input from the command line and uses that to direct kara around.
 
-![kara-explore-2](/assets/kara-explore-2.png)
+![kara-explore-2](../img/kara-explore-2.png)
 
 ```java
 public class InteractiveKara extends JavaKaraProgram {
@@ -553,12 +553,12 @@ public class CommandExample extends JavaKaraProgram {
 }
 ```
 
-The complete example code can be found at <https://github.com/hsro-inf-prg3/hsro-inf-prg3.github.io/tree/master/examples/src/main/java/designpattern/command>.
+The complete example code can be found at <https://github.com/hsro-inf-fpk/hsro-inf-fpk.github.io/tree/master/examples/src/main/java/designpattern/command>.
 
 
 ## Structure and Participants
 
-![dp-command](/assets/dp-command.svg)
+![dp-command](../img/dp-command.svg)
 
 - `Command`
 	+ declares an interface for executing an operation

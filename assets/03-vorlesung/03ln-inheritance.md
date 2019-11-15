@@ -302,7 +302,7 @@ As you can see, interfaces with default methods allow for a very modular and fle
 
 Consider the following diagram and its implementation:
 
-![Diamond Problem](/assets/diamond-problem.svg)
+![Diamond Problem](../img/diamond-problem.svg)
 
 
 ```java
@@ -391,7 +391,7 @@ String content = payload.getText();
 
 One way to make this modular and flexible is to use the _decorator pattern_ as depicted in the diagram:
 
-![decorator pattern](/assets/decorator-pattern.svg)
+![decorator pattern](../img/decorator-pattern.svg)
 
 The key is that the `PayloadDecorator` maintains a reference to a "source" Payload (the instance it's decorating) and does not yet implement the abstract `getText()` method.
 Now consider the implementing classes:

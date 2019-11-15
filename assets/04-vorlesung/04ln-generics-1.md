@@ -48,7 +48,7 @@ class UnicodeMessage extends Message {
 
 So far so good, here's our small world:
 
-![Messages](../assets/mixin-diamond-1.svg)
+![Messages](../img/mixin-diamond-1.svg)
 
 But what if you want to SHOUT WITH EMOTICONS 😈😈???
 If Java were to support multiple inheritance, we could do the following
