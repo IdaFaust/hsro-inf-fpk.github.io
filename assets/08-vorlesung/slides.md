@@ -18,13 +18,16 @@ What is on the menu for today?
 - Factory Pattern
 - Command Pattern
 
+.center[![:scale 90%](./img/dp_state.png)]
 ---
 
 # Singleton - Pattern
 
-The task is pretty simple: 
+The task is pretty simple:
 
 **How can you ensure that a certain object is unique among your application?**
+
+.center[![:scale 20%](./img/singleton.jpg)]
 
 ---
 
@@ -240,11 +243,11 @@ To have _kara_ explore the whole room (starting from the center), I could think 
 - walk to the top-right corner; then sweep left-to-right, top-to-bottom.
 
 
-The sample code can be found in <https://github.com/hsro-inf-prg3/hsro-inf-prg3.github.io/tree/master/examples/src/main/java/designpattern/strategy>.
+The sample code can be found in <https://github.com/hsro-inf-fpk/hsro-inf-fpk.github.io/tree/master/examples/src/main/java/designpattern/strategy>.
 
-Check out the `StrategyExampleBad`, which has two explicit plans, 
+Check out the `StrategyExampleBad`, which has two explicit plans,
 
-1. `planA()` and 
+1. `planA()` and
 2. `planB()`.
 
 Contrast it with the implementation in `StrategyExample`: here, the logic of the strategy is moved to a separate class which is instantiated as needed.
@@ -300,6 +303,8 @@ Refactor to the strategy pattern by extracting them from the class and use them 
 # Factory
 
 A factory provides instances that fulfill a certain interface.
+
+.center[![:scale 50%](./img/factory.png)]
 
 ---
 
