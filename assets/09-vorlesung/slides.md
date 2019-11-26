@@ -35,7 +35,7 @@ class: split-50
 # Today in 'Übung 3'
 
 - JavaFX Introduction and Coding Gems
-
+#
 .center[![:scale 80%](./img/JavaFX_Logo.png)]
 
 ---
