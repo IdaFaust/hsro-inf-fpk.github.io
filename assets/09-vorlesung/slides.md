@@ -8,6 +8,37 @@ class: title-slide
 Fakultät für Informatik, Cloud Computing
 
 ---
+class: split-50
+
+# Before we start...
+
+## The plan for the 'X-Mas Lecture'
+
+#### Robocode Tournament, Gluehwein and Pizza!
+
+.column[
+**Plan**
+
+8:00   --  Introduction Lecture into Robocode
+
+10:00  --  Start Coding and Testing
+
+11:00  --  Tournament starts
+]
+
+.column[
+.center[![:scale 50%](./img/robocode_windows.png)]
+]
+
+---
+
+# Today in 'Übung 3'
+
+- JavaFX Introduction and Coding Gems
+
+.center[![:scale 80%](./img/JavaFX_Logo.png)]
+
+---
 
 # Agenda for today
 
@@ -37,6 +68,7 @@ What is on the menu for today?
 Consider the following example:
 
 You design a campus app that provides information such as timetables, room plans, cafeteria meal plan, etc.
+
 The class responsible for retrieving the meal plan might look like this:
 
 ```java
@@ -193,6 +225,22 @@ Related: security facade; behaves like proxy, but hides error handling or authen
 
 ---
 
+# Proxy
+
+#### Pros
+
+- You can control the service object without clients knowing about it.
+- You can manage the lifecycle of the service object when clients don’t care about it.
+- The proxy works even if the service object isn’t ready or is not available.
+- Open/Closed Principle. You can introduce new proxies without changing the service or clients.
+
+#### Cons
+
+- The code may become more complicated since you need to introduce a lot of new classes.
+- The response from the service might get delayed.
+
+---
+
 # Proxy, Decorator and Composite
 
 **Decorator**
@@ -334,6 +382,19 @@ An example for a Facade would be to couple the classes `Engine`, `Transmission` 
 - Wrappers for third-party libraries
 
 - _Object_ adapter often best choice if implementation of Adaptee unknown
+
+---
+
+# Adapter
+
+#### Pros
+
+- _Single Responsibility Principle_: You can separate the interface or data conversion code from the primary business logic of the program.
+- _Open/Closed Principle_: You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.
+
+#### Cons
+
+- The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
 ---
 
@@ -606,6 +667,19 @@ You can easily try it by loading a few hundreds of images: you will see how much
 
 ---
 
+# Flyweight
+
+#### Pros
+
+- You can save lots of RAM, assuming your program has tons of similar objects.
+
+#### Cons
+
+- You might be trading RAM over CPU cycles when some of the context data needs to be recalculated each time somebody calls a flyweight method.
+- The code becomes much more complicated. New team members will always be wondering why the state of an entity was separated in such a way.
+
+---
+
 # Design Patterns Summary
 
 There is a total of 23 design patterns described by Gamma _et al._
@@ -642,3 +716,9 @@ Throughout this course, we already discussed quite a few of those:
 - [State](https://github.com/hsro-inf-prg3/03-inheritance): Allow an object to alter its behavior when its internal state changes; objects will appear to change their class.
 - [Strategy](/08ln-singleton-factory-strategy-command/): Define family of algorithms and make them interchangeable.
 - [Template method](/03ln-inheritance/): Define skeleton of algorithm/functionality in an operation, deferring certain steps/parts to subclasses.
+
+---
+
+# Final Thought!
+
+.center[![:scale 90%](https://imgs.xkcd.com/comics/cell_phone_functions.png)]
