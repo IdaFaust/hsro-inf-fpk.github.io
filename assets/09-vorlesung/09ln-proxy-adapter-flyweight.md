@@ -95,8 +95,8 @@ The fact that the proxy has the same interface allows the client to dynamically 
 ## Structure
 
 <div class="imgcols">
-<img alt="dp-proxy" src="/assets/dp-proxy.svg">
-<img alt="dp-proxy-process" src="/assets/dp-proxy_001.svg">
+<img alt="dp-proxy" src="../img/dp-proxy.svg">
+<img alt="dp-proxy-process" src="../img/dp-proxy_001.svg">
 </div>
 
 Proxies come in different flavors:
@@ -185,11 +185,11 @@ Alternatively, you could write an _object adapter_, that implements the target i
 
 _Class_ adapter:
 
-![dp-adapter-class](/assets/dp-adapter.svg)
+![dp-adapter-class](../img/dp-adapter.svg)
 
 _Object_ adapter:
 
-![dp-adapter-object](/assets/dp-adapter_001.svg)
+![dp-adapter-object](../img/dp-adapter_001.svg)
 
 
 > Note: The Adapter is not to be confused with the [Facade](https://en.wikipedia.org/wiki/Facade_pattern), in which a whole subsystem is abstracted into a new class, typically implementing a **new** interface.
@@ -371,7 +371,7 @@ You can easily try it by loading a few hundreds of images: you will see how much
 
 ## Structure
 
-![dp-flyweight](/assets/dp-flyweight.svg)
+![dp-flyweight](../img/dp-flyweight.svg)
 
 Notes: 
 - The term _flyweight_ is misleading: it is _light_ in a sense of _less and static parts_, but often contains the "memory heavy" objects.
