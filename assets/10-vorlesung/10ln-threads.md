@@ -39,7 +39,7 @@ Test: 2
 
 Or expressed as a sequence diagram, with methods as columns:
 
-![single-process](/assets/process.svg)
+![single-process](../img/process.svg)
 
 This is also the behavior you see when using the debugger and going through your program step-by-step, using the _step-into_ action.
 
@@ -93,7 +93,7 @@ Bureaucrat 2 is done!
 main() done!
 ```
 
-![bureaucrats-1](/assets/bureaucrats.svg)
+![bureaucrats-1](../img/bureaucrats.svg)
 
 
 To make the bean counters work in parallel, use the [`Thread` class](https://docs.oracle.com/javase/9/docs/api/java/lang/Thread.html).
@@ -120,7 +120,7 @@ public static void main(String[] args) {
 }
 ```
 
-![bureaucrats-2](/assets/bureaucrats_001.svg)
+![bureaucrats-2](../img/bureaucrats_001.svg)
 
 This will likely produce output similar to this:
 
@@ -346,7 +346,7 @@ The `synchronized` keyword allows us to safely change values which will be read 
 However sometimes this basic mechanism is not enough.
 Consider the following scenario:
 
-![Deadlock](/assets/threads-deadlock.svg)
+![Deadlock](../img/threads-deadlock.svg)
 
 This is a classic _deadlock_, similar to a Mexican stand-off from the movies:
 `threadA` wants to acquire `lock2`, which is currently taken by `threadB`; `threadB` wants `lock1`, which is currently taken by `threadA`.
@@ -355,7 +355,7 @@ As a result, nothing happens, the situation is stuck.
 When inside a `synchronized` section, you can use the methods `wait()`, `notify()` and `notifyAll()` of the lock to _wait_ in a thread until _notified_ by some other thread.
 You can use this mechanism to have workers only be active when they should be:
 
-![threads-wait-notify](/assets/threads-wait-notify.svg)
+![threads-wait-notify](../img/threads-wait-notify.svg)
 
 > Note: These methods are parts of the Java threading API and are defined `final` in `Object`
 
@@ -367,7 +367,7 @@ You can use this mechanism to have workers only be active when they should be:
 The classic example to demonstrate how to use `wait()` and `notify()` in combination is the _consumer-producer-problem_: producers store data in a (ring) buffer and consumers take data out of the buffer.
 A typical example is a streaming media player: the producer is the decoder that reads encoded data and stores decoded (raw) media in the buffer; the media device (e.g. video player) is the consumer, removing ready-to-render data from the buffer.
 
-![consumer-producer](/assets/consumer-producer.png)
+![consumer-producer](../img/consumer-producer.png)
 
 The buffer provides the basic operations `put(T t)` and `T get()`, which should each block if full (put) or empty (get).
 
@@ -412,7 +412,7 @@ This works because **only one** thread at a time is allowed within the critical 
 
 And here is the complete lifecycle of the thread showing the effects of `start()`, `wait()`, `sleep()` and `join()`.
 
-![thread-lifecycle](/assets/thread-lifecycle.svg)
+![thread-lifecycle](../img/thread-lifecycle.svg)
 
 
 # Advanced Aspects of Java: Atomic Access

@@ -56,11 +56,11 @@ _Pflichtmodul im [Bachelorstudiengang Informatik](https://www.th-rosenheim.de/te
 	
 	Last but not least! Zum Abschluß der Pattern-Reihe: Proxy-, Adapter- und Flyweight-Pattern.
 
-- **Parallel Processing (Teil 1) ([Slides](/assets/slides.html?10-vorlesung), [Pdf](/assets/10-vorlesung/10-vorlesung.pdf), [Skript](/assets/10-vorlesung/10ln-threads/), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/10-threads-jfx) or [Android](https://github.com/hsro-inf-fpk/10-threads-android))**
+- **Parallel Processing (Teil 1) ([Slides](/assets/slides.html?10-vorlesung), [Pdf](/assets/10-vorlesung/10-vorlesung.pdf), [Skript](/assets/10-vorlesung/10ln-threads/), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/10-threads-jfx))**
 
 	Parallele Ausführung von Programcode ist ein wichtiges Konzept. In dieser Session steigen wir ein in Threads und parallele Verarbeitung.
 
-- **Parallel Processing (Teil 2) ([Slides](/assets/slides.html?11-vorlesung), [Skript](/assets/11-vorlesung/11ln-futures.md), Übungen: [Terminal](https://github.com/hsro-inf-fpk/11-futures-cli) or [Android](https://github.com/hsro-inf-fpk/11-futures-android))**
+- **Parallel Processing (Teil 2) ([Slides](/assets/slides.html?11-vorlesung),  [Pdf](/assets/11-vorlesung/11-vorlesung.pdf), [Skript](/assets/11-vorlesung/11ln-futures.md), Übungen: [Terminal](https://github.com/hsro-inf-fpk/11-futures-cli) or [Android](https://github.com/hsro-inf-fpk/11-futures-android))**
 	
 	`Thread`s are clunky--- erweiterte Konzepte, wie `Future` oder `Promises` werden in dieser Session behandelt.
 
