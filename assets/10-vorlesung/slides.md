@@ -6,7 +6,6 @@ class: title-slide
 ## 10 - Parallel Processing pt. 1
 ### Prof. Dr. Marcel Tilly
 Fakultät für Informatik, Cloud Computing
-
 ---
 class: split-50
 
@@ -18,12 +17,17 @@ class: split-50
 
 .column[
 **Plan**
+**Plan**
 
-8:00   --  Introduction Lecture into Robocode
+8:00   --  Introduction into Robocode (R0.03)
+09:45  --  Start Coding and Testing   (S1.31)
+11:00  --  Tournament starts          
 
-10:00  --  Start Coding and Testing
+16:00  --  last round!
 
-11:00  --  Tournament starts
+16:30  --  And the winner is? Celebration
+
+17:00  --  End of show
 ]
 
 .column[
@@ -182,6 +186,8 @@ public static void main(String[] args) {
 }
 ```
 
+**What do we expect now?**
+
 ---
 # Threaded Bean Counters
 
@@ -191,7 +197,7 @@ public static void main(String[] args) {
 
 # Thread Output
 
-**So, what is the line line of the output?**
+**So, what is the last line of the output?**
 
 a) Bureaucrat 2 is done!
 
@@ -386,13 +392,13 @@ public static void main(String[] args) {
 }
 ```
 
-**What is the result of c?**
+**What is the total value at the end?**
 
 ---
 
 # Pingo again!
 
-**What is the result of c?**
+**What is the total value at the end?**
 
 A) < 40.000
 
@@ -437,16 +443,16 @@ void increment() {
 That means, two threads can be at different steps of this method, but share the memory.
 Note that the _stack_ variables are per-thread, whereas the _heap_ variables (the counter instance) are shared (see [Java VM Specifications](https://docs.oracle.com/javase/specs/jvms/se9/html/jvms-2.html#jvms-2.5.2)).
 
-.center[
-|   | Thread 1 | Thread 2 | _result_ |
-| - | -------- | -------- | -------- |
+
+
+| # | Thread 1 | Thread 2 |  result  |
+|---|----------|----------|----------|
 | 1 | tmp1 = c |          | tmp1 = 0 |
 | 2 |          | tmp2 = c | tmp2 = 0 |
 | 3 | ++tmp1   |          | tmp1 = 1 |
 | 4 |          | ++tmp2   | tmp2 = 1 |
 | 5 | c = tmp1 |          | c = 1    |
-| 6 |          | c = tmp2 | **c = 1 !** |
-]
+| 6 |          | c = tmp2 | c = 1 !  |
 
 ---
 

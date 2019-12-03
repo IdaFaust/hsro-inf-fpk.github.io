@@ -56,7 +56,7 @@ _Pflichtmodul im [Bachelorstudiengang Informatik](https://www.th-rosenheim.de/te
 	
 	Last but not least! Zum Abschluß der Pattern-Reihe: Proxy-, Adapter- und Flyweight-Pattern.
 
-- **Parallel Processing (Teil 1) ([Slides](/assets/slides.html?10-vorlesung), [Pdf](/assets/10-vorlesung/10-vorlesung.pdf), [Skript](/assets/10-vorlesung/10ln-threads/), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/10-threads-jfx))**
+- **Parallel Processing (Teil 1) ([Slides](/assets/slides.html?10-vorlesung), [Pdf](/assets/10-vorlesung/10-vorlesung.pdf), [Skript](/assets/10-vorlesung/10ln-threads.md), Übungen: [JavaFX](https://github.com/hsro-inf-fpk/10-threads-jfx))**
 
 	Parallele Ausführung von Programcode ist ein wichtiges Konzept. In dieser Session steigen wir ein in Threads und parallele Verarbeitung.
 

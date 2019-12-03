@@ -5,6 +5,7 @@ body {
   font-size: medium;
 }
 
+
 h1 {
   color: #F39100;
   font-weight: 400;
@@ -23,6 +24,18 @@ h2, h3 {
 
 code {
   border-radius: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 5px;
 }
 
 .footnote {
