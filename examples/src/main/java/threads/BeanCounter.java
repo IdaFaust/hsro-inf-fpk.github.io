@@ -3,6 +3,7 @@ package threads;
 import java.util.Arrays;
 
 class BeanCounter implements Runnable {
+
 	private final String name;
 	private final double[] data;
 	BeanCounter(String name, int n) {
@@ -21,21 +22,10 @@ class BeanCounter implements Runnable {
 		BeanCounter b1 = new BeanCounter("Bureaucrat 1", 10000);
 		BeanCounter b2 = new BeanCounter("Bureaucrat 2", 1000);
 
-//		b1.run();
-//		b2.run();
+		new Thread(b1).start();
+		new Thread(b2).start();
 
-		Thread t1 = new Thread(b1);
-		Thread t2 = new Thread(b2);
-
-		t1.start();
-		t2.start();
-
-		while (t1.isAlive() || t2.isAlive())
-			;
-
-//		t1.join();
-//		t2.join();
-
+		//new Thread(() -> System.out.println("Hallo")).start();
 		System.out.println("main() done!");
 	}
 }

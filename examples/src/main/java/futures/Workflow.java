@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutionException;
 public class Workflow {
 	static void displayStatus() throws ExecutionException, InterruptedException {
 		Executor ex = new SimpleExecutor();
-		final String user = "riko493";
+		final String user = "mustermann";
 		final String pass = "12345";  // spaceballs, anyone? :-)
 
 		// log in...

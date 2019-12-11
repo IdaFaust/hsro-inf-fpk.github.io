@@ -1,5 +1,5 @@
 package futures;
 
 interface Callable<T> {
-	T call();
+	T call() throws InterruptedException;
 }

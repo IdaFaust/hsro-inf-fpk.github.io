@@ -2,6 +2,9 @@ package threads;
 
 class Counter {
 	private int c = 0;
+
+	private Object lock;
+
 	int getCount() {
 		return c;
 	}

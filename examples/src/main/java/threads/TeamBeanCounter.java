@@ -9,7 +9,7 @@ public class TeamBeanCounter implements Runnable {
 	@Override
 	public void run() {
 		for (int i = 0; i < 100000; i++) {
-			c.increment();
+			c.incrementA();
 		}
 		System.out.println("Total beans: " + c.getCount());
 	}
@@ -21,5 +21,7 @@ public class TeamBeanCounter implements Runnable {
 		new Thread(new TeamBeanCounter(c)).start();
 		new Thread(new TeamBeanCounter(c)).start();
 		new Thread(new TeamBeanCounter(c)).start();
+
+
 	}
 }

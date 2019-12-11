@@ -35,4 +35,23 @@ public class SimpleExecutor implements Executor {
 			}
 		};
 	}
+
+	public static void main(String[] args) {
+		SimpleExecutor ex = new SimpleExecutor();
+
+		int a = 4, b = 12;
+		Future<Integer> f1 = ex.async(() -> a / b);
+		Future<Integer> f2 = ex.async(() -> a * b);
+		Future<Integer> f3 = ex.async(() -> a + b);
+		Future<Integer> f4 = ex.async(() -> a - b);
+
+		// do other things if you like...
+		try {
+			System.out.println(f1.get());
+			System.out.println(f4.get());System.out.println(f3.get());System.out.println(f2.get());
+		} catch (ExecutionException | InterruptedException e) {
+			System.out.println("The thread raised an exception: "
+					+ e.getCause());
+		}
+	}
 }

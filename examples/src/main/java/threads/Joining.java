@@ -16,10 +16,7 @@ public class Joining implements Runnable {
 		Thread t = new Thread(new Joining());
 		t.start();
 
-//		while (t.isAlive())
-//			;
-
-//		t.join();
+		t.join();
 
 		System.out.println("Done!");
 	}
