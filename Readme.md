@@ -77,3 +77,7 @@ _Pflichtmodul im [Bachelorstudiengang Informatik](https://www.th-rosenheim.de/te
 - **Zusammenfassung und Klausurvorbereitung**
 
 	Diese Session nutzen wir, um das Semester noch mal grob zu überfliegen und das als Klausurvorbereitung zu nutzen. Sicher eine gute Chance Fragen loszuwerden.
+
+- **Robocode Programming in Java ([Slides](/assets/slides.html?15-vorlesung), [Pdf](/assets/15-vorlesung/15-vorlesung.pdf))**
+
+	Eine Session zu Robocode.
