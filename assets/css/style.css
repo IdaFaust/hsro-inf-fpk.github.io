@@ -26,6 +26,10 @@ code {
   border-radius: 5px;
 }
 
+.remark-inline-code {
+  background-color: #f0f0f0;
+}
+
 table {
   border-collapse: collapse;
   margin-left: auto;
