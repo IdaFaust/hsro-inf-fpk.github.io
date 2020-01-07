@@ -8,7 +8,16 @@ permalink: /12ln-fp1/
 [Functional Programming](https://en.wikipedia.org/wiki/Functional_programming) (FP) is a programming paradigm that (re-)gained quite some traction in the past years.
 One of the most populuar functional programming languages these days is [Scala](http://scala-lang.org/), which combines object-oriented and functional aspects with a very neat syntax and high portability: it is executed on the Java VM and can thus integrate seamlessly with any existing Java libraries.
 
-> If you prefer reading a text book, I can recommend [Functional Programming in Java](https://www.amazon.de/Functional-Programming-Java-Harnessing-Expressions/dp/1937785467/) by Venkat Subramaniam.
+## Text Books
+
+- [Functional Programming in Java](https://www.amazon.de/Functional-Programming-Java-Harnessing-Expressions/dp/1937785467/) by Venkat Subramaniam.
+
+- [Parallel and Concurrent Programming in Haskell](https://www.amazon.de/Parallel-Concurrent-Programming-Haskell-Multithreaded-ebook/dp/B00DWJ1BIG) by Simon Marlow
+
+- [Programming Erlang](https://www.amazon.de/Programming-Erlang-Concurrent-Pragmatic-Programmers/dp/193778553X) by Joe Armstrong
+
+- [Pearls of Functional Algorithm Design](https://www.amazon.de/Pearls-Functional-Algorithm-Design-English-ebook/dp/B009019VUK) by Richard Bird
+
 
 
 ### Detour: The Beautiful Syntax of Scala
@@ -42,7 +51,69 @@ def insert(xs: List[Int], x: Int): List[Int] = xs match {
 }
 ```
 
-But back to FP in _Java_.
+### In Haskell
+
+Haskell syntax:
+- pure, clean, small.
+- Natural built-in operators for list operations (head, tail, add, split, etc.)
+- Compiles to binary
+
+With **Haskell**, _insertion sort_ can be written in even fewer lines of code:
+
+.small[
+```haskell
+insert :: Ord a => a -> [a] -> [a]
+insert x [] = [x]
+insert x (y:ys) | x < y     = x:y:ys
+                | otherwise = y:(insert x ys)
+
+isort :: Ord a => [a] -> [a]
+isort [] = []
+isort (x:xs) = insert x (isort xs)
+```
+]
+
+### In Elixir
+
+Elixir syntax:
+- With scope and module. 
+- Natural built-in operators for list operations (head, tail, add, split, etc.)
+
+With **Elixir**, _insertion sort_ is still small:
+
+.small[
+```elixir
+defmodule Sort do
+  def isort(list) when is_list(list), do: isort(list, [])
+  def isort([], sorted), do: sorted
+  def isort([h | t], sorted), do: isort(t, insert(h, sorted))
+ 
+  defp insert(x, []), do: [x]
+  defp insert(x, sorted) when x < hd(sorted), do: [x | sorted]
+  defp insert(x, [h | t]), do: [h | insert(x, t)]
+end
+```
+]
+
+### Reminder: Insertion Sort in Java
+
+In **Java** still clean but **hard** to get what the code is doing!
+
+```java
+public static void insertSort(int[] A){
+  for(int i = 1; i < A.length; i++){
+    int value = A[i];
+    int j = i - 1;
+    while(j >= 0 && A[j] > value){
+      A[j + 1] = A[j];
+      j = j - 1;
+    }
+    A[j + 1] = value;
+  }
+}
+```
+
+### But back to FP in _Java_.
 
 (Pure) FP is based on two principles: **Immutability** (all objects are unchangeable) and **functions as first-class citizens** (functions are objects and can thus be passed as arguments).
 
@@ -180,7 +251,7 @@ This brings us right to the techique central to functional programming:
 (Even [Google knows that](https://www.google.com/search?q=recursion)!)
 
 To warm up, let's formulate a recursive `toString()` method for our `List` class.
-**Remember:** When writing recursive functions, you ned to make sure to capture the _terminal_ cases (the ones where you know the answer) and the _recursion cases_ (the ones where you make the recursive calls).
+**Remember:** When writing recursive functions, you need to make sure to capture the _terminal_ cases (the ones where you know the answer) and the _recursion cases_ (the ones where you make the recursive calls).
 For convenience, we'll make this a member function:
 
 ```java
