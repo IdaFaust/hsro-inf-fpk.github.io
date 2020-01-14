@@ -12,6 +12,8 @@ Fakultät für Informatik, Cloud Computing
 
 ## Besprechung der Probeklausur!
 
+.right[![:scale 30%](./img/klausur.jpg)]
+
 ---
 
 # Agenda for today!
@@ -24,11 +26,13 @@ On the menue for today:
 
 **Enjoy!**
 
+.right[![:scale 50%](./img/menu.jpg)]
+
 ---
 
 # Why is FP useful?
 
-There are a couple of pros why FP makes sense:
+There are a couple of _pros_ why FP makes sense:
 
 - Reduces code redundancy
 
@@ -67,7 +71,9 @@ There are some thougths against FP:
 Working on lists (and later streams), we defined three main methods:
 
 - `filter` utilizing a `Predicate<T>` to retain only certain elements,
-- `map` utilizing a `Function<T, R>` to transform a list of elements of type `T` to a list of type `R`, and finally
+
+- `map` utilizing a `Function<T, R>` to transform a list of elements of type `T` to a list of type `R`
+
 - `forEach` utilizing a `Consumer<T>` that accepts (in order of the list).
 
 Working on lists, we defined those _recursively_:
@@ -116,16 +122,18 @@ static <A> void forEach(List<A> xs, Consumer<A> c) {
 Here are three key observations:
 
 1. All three methods "iterate" over the list, i.e. all elements are visited.
+
 2. The `forEach` method is _tail recursive_, as in the recursive call is the very last one prior to `return`.
+
 3. The `filter` and `map` methods return another list, while `forEach` returns nothing (`void`).
 
-In this (final) chapter, we'll talk about list (or stream) _reduction_, that is reducing a sequence of values to a single value.
+**In this (final) chapter, we'll talk about list (or stream) _reduction_, that is reducing a sequence of values to a single value.**
 
 ---
 
 # Reduction
 
-Let's start with a simple example: sum all numbers of a list.
+Let's start with a simple example: **sum all numbers of a list**
 
 ```java
 static int sum(List<Integer> xs) {
@@ -134,11 +142,10 @@ static int sum(List<Integer> xs) {
 }
 ```
 
-For `list(1, 3, 3, 7)`, this function evaluates to
+For `list(1, 3, 3, 7)`, this function evaluates (unfolds) to
 
 --
 
-.small[
 ```
 sum(list(1, 3, 3, 7))
 -> 1 + sum(list(3, 3, 7))
@@ -151,7 +158,6 @@ sum(list(1, 3, 3, 7))
 -> 1 + 13
 -> 14
 ```
-]
 
 ---
 
@@ -194,7 +200,7 @@ Depending on the language, they can be realized as a for-loop reusing the stack 
 
 # join - Strings
 
-Let's consider another example: joining Strings together by concatenating them.
+Let's consider another example: **joining Strings together by concatenating them**
 
 ```java
 static String join(List<String> xs, String z) {
@@ -210,6 +216,8 @@ static String join(List<String> xs, String z) {
 The `sum` and `join` functions look almost identical -- the only difference being the `Integer` and `String` types.
 
 **Why not generalize?**
+
+--
 
 ```java
 static <T> T reduce(List<T> xs, T z) {
@@ -277,14 +285,18 @@ reduce(list("a", "b", "c", "d"), "", String::concat);
 It may sound odd, but `forEach` is actually a special case of `reduce`:
 
 ```java
-reduce(list(1, 3, 3, 7), 0, (i, j) -> { System.out.println(j); return j; });
+reduce(list(1, 3, 3, 7), 0, (i, j) -> { 
+		System.out.println(j); 
+		return j; 
+	});
 ```
 
 ---
 
 # Left Fold
 
-The `reduce` function derived above is a bit restricted: it only works to reduce elements of type `T` to another `T`.
+The `reduce` function is a bit restricted: it only works to reduce elements of type `T` to another `T`.
+
 This might be a problem: consider the case where you sum up a very long list of potentially large `Integer`s -- you may run into an overflow.
 
 The solution to this would be to add the `Integer`s from the list to a [BigInteger](https://docs.oracle.com/javase/9/docs/api/java/math/BigInteger.html) which is of arbitrary precision.
@@ -340,8 +352,7 @@ foldl(xs, BigInteger.ZERO, (b, i) -> b.add(BigInteger.valueOf(i)));
 
 The function is called _left fold_, since the list is folded _to the left_, if you were to look at the evaluation:
 
-.small[
-```
+```java
 foldl(list(1, 3, 3, 7), 0)
 -> foldl(list(3, 3, 7), 0+1)
 -> foldl(list(3, 7), 1+3)
@@ -349,11 +360,9 @@ foldl(list(1, 3, 3, 7), 0)
 -> foldl(empty(), 7+7)
 -> 14
 ```
-]
 
 and visualized that a list, the operations are performed in this order:
 
-.small[
 ```
 // start at the bottom left!
         op
@@ -366,14 +375,14 @@ and visualized that a list, the operations are performed in this order:
  / \
 z   1
 ```
-]
 
 ---
 
 # Left Fold
 
 Look at that list again, doesn't it look oddly familiar?
-If we define `z` is the empty list, and `op` is the list constructor, you end up with the _reverse_ of the original list:
+
+If we define `z` as the empty list, and `op` is the list constructor, you end up with the _reverse_ of the original list:
 
 ```java
 foldl(list(1, 3, 3, 7), List.<Integer>empty(), 
@@ -443,25 +452,20 @@ To complete the top most operation, you need decend all the way down the fold.
 Again, does that look familar?
 If we define `z` as a list and `op` as the list construction, we end up with `append`:
 
-.small[
 ```java
 foldr(xs, List.<Integer>list(49), (z, zs) -> list(z, zs));
 // 1, 3, 3, 7, 49
 ```
-]
 
 If we add in some logic, we get `map`:
 
-.small[
 ```java
 foldr(xs, List.<Integer>empty(), (z, zs) -> list(z*z, zs));
 // squares: 1, 9, 9, 49
 ```
-]
 
 And even `filter`:
 
-.small[
 ```java
 // retain all values less than 5
 foldr(xs, List.<Integer>empty(), (z, zs) -> {
@@ -470,7 +474,6 @@ foldr(xs, List.<Integer>empty(), (z, zs) -> {
 });
 // 7
 ```
-]
 
 ---
 
@@ -502,9 +505,15 @@ static <T, R> List<R> maptr(List<T> xs, Function<T, R> op) {
 ### Generation
 
 - `Stream.of(...)` with array or varargs
+
 - `Collection.stream()`, if supported
+
 - `Stream.generate(...)` using a generator
+
 - Popular APIs, e.g. `Pattern.compile("\\W").splitAsStream("hello world");`
+
+
+.right[![:scale 40%](./img/traffic.jpg)]
 
 ---
 
@@ -514,10 +523,15 @@ static <T, R> List<R> maptr(List<T> xs, Function<T, R> op) {
 
 You already know most of the intermediate operations:
 - `filter(Predicate<T> p)` removes/skips unwanted elements in the stream
+
 - `map(Function<T, R> f)` transforms a `Stream<T>` into a `Stream<R>` using the provided `Function`
+
 - `sorted(Comparator<T> comp)` returns a sorted stream
+
 - `concat(Stream<T> s)` appends another stream
+
 - `distinct()` removes duplicates
+
 - `skip(int n)` and `limit(int n)` skip elements and truncate the stream
 
 ---
@@ -652,21 +666,21 @@ Map<Boolean, List<Student>> passingFailing = students.stream()
 
 # Finding Values in a Stream
 
-Use `findFirst()`, `min()` or `max()` to find values, returns `Optional<T>`!
+#### Use `findFirst()`, `min()` or `max()` to find values, returns `Optional<T>`!
 
-Often you need to find certain values in a stream, such as `findFirst()`, `min()` or `max()`.
+- Often you need to find certain values in a stream, such as `findFirst()`, `min()` or `max()`.
 
-Since these are methods that are often used on streams that are potentially empty, they return an [Optional](https://docs.oracle.com/javase/9/docs/api/java/util/Optional.html).
+- Since these are methods that are often used on streams that are potentially empty, they return an [Optional](https://docs.oracle.com/javase/9/docs/api/java/util/Optional.html).
 
-Optionals are similar to futures, as in you can `get()` the content if it `isPresent()`.
+- Optionals are similar to futures, as in you can `get()` the content if it `isPresent()`.
 
-They can also be mapped to another `Optional`, or used as a `.stream()`.
+- They can also be mapped to another `Optional`, or used as a `.stream()`.
 
 ---
 
 # Verifying Values in a Stream
 
-Another frequent use case it to verify if all, any or none of the elements in a stream match a certain criteria.
+Another frequent use case: Verify if _all_, _any_ or _none_ of the elements in a stream match a certain criteria.
 
 Use the `allMatch`, `anyMatch` and `noneMatch` functions, which take a `Predicate<T>` as argument.
 
@@ -684,7 +698,7 @@ Map<Person.Gender, List<Person>> byGender = allPeople
 	.collect(Collectors.groupingBy(Person::getGender));
 
 // or parallel
-ConcurrentMap<Person.Sex, List<Person>> byGender = allPeople
+ConcurrentMap<Person.Gender, List<Person>> byGender = allPeople
 	.parallelStream()
 	.collect(Collectors.groupingByConcurrent(Person::getGender));
 ```
