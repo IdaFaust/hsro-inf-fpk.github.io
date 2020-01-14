@@ -4,7 +4,7 @@ description: "Materialien zum Pflichtmodul Fortgeschrittene Programmierkonzepte"
 baseurl: ""
 url: "https://hsro-inf-fpk.github.io"
 exclude: ["LICENSE", "Remarks.md", "examples"]
-github_username: ["matowrx"]
+github_username: ["matworx"]
 
 # Build settings
 markdown: kramdown
