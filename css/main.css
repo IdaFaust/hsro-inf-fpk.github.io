@@ -2,8 +2,8 @@
 /* ----------------------------------------------------------*/
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 20;
+  padding: 20;
 }
 
 html, body { height: 100%; }
@@ -17,7 +17,10 @@ body {
   background-color: #fdfdfd;
 }
 
-h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 { 
+  font-size: 100%; 
+  font-weight: 400; 
+}
 
 a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
