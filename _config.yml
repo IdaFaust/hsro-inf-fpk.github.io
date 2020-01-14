@@ -3,7 +3,7 @@ email: marcel.tilly@th-rosenheim.de
 description: "Materialien zum Pflichtmodul Fortgeschrittene Programmierkonzepte"
 baseurl: ""
 url: "https://hsro-inf-fpk.github.io"
-exclude: ["LICENSE", "Remarks.md", "examples"]
+exclude: ["LICENSE", "examples"]
 github_username: ["matworx"]
 
 # Build settings

@@ -18,14 +18,23 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 { 
-  font-size: 100%; 
+  font-size: 30px; 
   font-weight: 400; 
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
 a:visited { color: #205caa; }
 
+ul {
+  padding-left: 30px;
+}
+
+li {
+  padding-bottom: 10px;
+}
 
 /* Utility */
 
